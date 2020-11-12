@@ -1,0 +1,208 @@
+{
+  "rest": {
+    "title": "ExerShip - REST",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "icon": "https://image.flaticon.com/icons/svg/867/867644.svg",
+    "version": "0.0.1",
+    "baseUrl": "http://localhost:5000",
+    "bookmarks": [
+      {
+        "name": "Auth",
+        "color": "orange",
+        "icon": "shield-account"
+      },
+      {
+        "name": "Front-End",
+        "color": "blue"
+      },
+      {
+        "name": "Back-End",
+        "color": "#1DE9B6"
+      }
+    ],
+    "src": [
+      {
+        "name": "Auth",
+        "elements": [
+          {
+            "name": "sign-in",
+            "authorization": null,
+            "mapping": "/auth/sign-in3",
+            "access": "post",
+            "bookmark": "",
+            "description": "Servicio para registrar un usuario",
+            "html": null,
+            "steps": [
+              {
+                "name": "/users/find-all",
+                "access": "get"
+              }
+            ],
+            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
+            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
+            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
+
+
+
+            "pathVariables": [
+              {
+                "regex": "{userName}",
+                "value": "Fernando Garcia",
+                "type": "text"
+              }, {
+                "regex": "{password}",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "requestBody": {
+              "userName": "fernnypay95",
+              "password": "fernny27"
+            }
+          },{
+            "name": "sign-up",
+            "authorization": null,
+            "mapping": "/auth/sign-in4",
+            "access": "put",
+            "bookmark": "",
+            "description": "Servicio para registrar un usuario",
+            "html": null,
+            "steps": [
+              {
+                "name": "/users/find-all",
+                "access": "get"
+              }
+            ],
+            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
+            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
+            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
+
+
+
+            "pathVariables": [
+              {
+                "regex": "{userName}",
+                "value": "Fernando Garcia",
+                "type": "text"
+              }, {
+                "regex": "{password}",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "requestBody": {
+              "userName": "fernnypay95",
+              "password": "fernny27"
+            }
+          },{
+            "name": "sign-up",
+            "authorization": null,
+            "mapping": "/auth/sign-in",
+            "access": "delete",
+            "bookmark": "",
+            "description": "Servicio para registrar un usuario",
+            "html": null,
+            "steps": [
+              {
+                "name": "/users/find-all",
+                "access": "get"
+              }
+            ],
+            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
+            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
+            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
+
+
+
+            "pathVariables": [
+              {
+                "regex": "{userName}",
+                "value": "Fernando Garcia",
+                "type": "text"
+              }, {
+                "regex": "{password}",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "requestBody": {
+              "userName": "fernnypay95",
+              "password": "fernny27"
+            }
+          },{
+            "name": "sign-up",
+            "authorization": null,
+            "mapping": "/auth/sign-in/hola",
+            "access": "patch",
+            "bookmark": "",
+            "description": "Servicio para registrar un usuario",
+            "html": null,
+            "steps": [
+              {
+                "name": "/users/find-all",
+                "access": "patch"
+              }
+            ],
+            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
+            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
+            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
+
+
+
+            "pathVariables": [
+              {
+                "regex": "{userName}",
+                "value": "Fernando Garcia",
+                "type": "text"
+              }, {
+                "regex": "{password}",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "requestBody": {
+              "userName": "fernnypay95",
+              "password": "fernny27"
+            }
+          },{
+            "name": "sign-up",
+            "authorization": null,
+            "mapping": "/auth/sign-in",
+            "access": "get",
+            "bookmark": "",
+            "description": "Servicio para registrar un usuario",
+            "html": null,
+            "steps": [
+              {
+                "name": "/users/find-all",
+                "access": "get"
+              }
+            ],
+            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
+            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
+            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
+
+
+
+            "pathVariables": [
+              {
+                "regex": "{userName}",
+                "value": "Fernando Garcia",
+                "type": "text"
+              }, {
+                "regex": "{password}",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "requestBody": {
+              "userName": "fernnypay95",
+              "password": "fernny27"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "doc": "sad"
+}

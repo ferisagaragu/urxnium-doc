@@ -1,0 +1,12 @@
+<mat-card *ngIf="doc" class="position scroll">
+  <div class="header">
+    <mat-form-field class="w-100 input-search" appearance="outline">
+      <mat-label>Buscar...</mat-label>
+      <input #inputSearch matInput placeholder="Escribe aquí tu búsqueda">
+    </mat-form-field>
+  </div>
+
+  <div class="space"></div>
+
+  <app-list-rest [src]="doc.src"></app-list-rest>
+</mat-card>

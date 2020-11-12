@@ -1,0 +1,49 @@
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;
+  background-color: gainsboro;
+  height: 1px;
+}
+
+.name-position {
+  padding-top: 6px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+.get {
+  color: white !important;
+  background: #00B0FF !important;
+  margin-left: 11px !important;
+}
+
+.post {
+  color: white !important;
+  background: #00E676 !important;
+}
+
+.put {
+  color: white !important;
+  background: #FF9100 !important;
+  margin-left: 11px !important;
+}
+
+.delete {
+  color: white !important;
+  background: #F44336 !important;
+  margin-left: 16px !important;
+}
+
+.patch {
+  color: white !important;
+  background: #1DE9B6 !important;
+  margin-left: 19px !important;
+}

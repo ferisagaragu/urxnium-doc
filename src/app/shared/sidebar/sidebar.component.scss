@@ -1,0 +1,41 @@
+.position {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 300px;
+}
+
+.header {
+  background: #212121;
+  margin-top: -16px !important;
+  margin-left: -16px;
+  width: 299.5px;
+  height: 100px;
+  padding: 16px;
+  position: fixed;
+  z-index: 2;
+}
+
+.space {
+  height: 100px;
+}
+
+.button-font {
+  color: #fafafa;
+}
+
+.scroll {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 5px;
+  right: -5px;
+  background-color: transparent;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(158, 158, 158, 0.8);
+}
