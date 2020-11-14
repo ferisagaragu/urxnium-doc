@@ -67,18 +67,18 @@
     </div>
 
     <div *ngIf="requestBody" class="col-md-12">
-      <div
-        #requestBodyRef
-        class="highlight-orange"
-        appHighlightEditor
-      >
-        {{ requestBody | jsonFormat }}
-      </div>
+      <app-highlight-editor formControlName="requestBody">
+      </app-highlight-editor>
     </div>
 
     <div class="col-md-12 mt-3 text-right">
-      <button mat-stroked-button color="primary">
+      <button
+        mat-stroked-button
+        color="primary"
+        [disabled]="load"
+      >
         Send request
+        <em *ngIf="load" class="mdi mdi-loading mdi-spin"></em>
       </button>
     </div>
   </div>

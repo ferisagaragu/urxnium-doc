@@ -78,21 +78,13 @@
               "error": "Internal Server Error",
               "message": "your error message"
             }
-          }
-        ]
-      },{
-        "name": "Auth",
-        "elements": [
-          {
+          },{
             "name": "sign-in",
-            "authorization": true,
-            "mapping": "/auth/sign-in3/{isFalse}",
+            "authorization": false,
+            "mapping": "/auth/sign-in",
             "access": "post",
             "bookmark": "",
-            "permissions": [
-              "ADMIN",
-              "VISOR"
-            ],
+            "permissions": [ ],
             "description": "Servicio para registrar un usuario",
             "html": null,
             "steps": [
@@ -121,20 +113,16 @@
               "error": "Internal Server Error",
               "message": "your error message"
             },
-            "pathVariables": [
-              {
-                "name": "isFalse",
-                "description": "Es el nombre del usuario",
-                "value": true,
-                "type": "check",
-                "required": true
-              }
-            ],
             "requestBody": {
               "userName": "fernnypay95",
               "password": "fernny27"
             }
           }
+        ]
+      },{
+        "name": "Auth2",
+        "elements": [
+
         ]
       }
     ]

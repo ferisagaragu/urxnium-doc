@@ -22,8 +22,13 @@
         class="mt-2 mr-3"
         mat-stroked-button
         type="submit"
+        [disabled]="load"
       >
-        <em class="mdi mdi-reload"></em>
+        <em
+          class="mdi mdi-reload"
+          [class.mdi-spin]="load"
+        >
+        </em>
       </button>
 
       <em

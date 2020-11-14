@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Output } from '@angular/core';
 import { CodeJar } from 'codejar';
 import Prism from 'prismjs';
 
@@ -8,12 +8,14 @@ import Prism from 'prismjs';
 export class HighlightEditorDirective implements AfterViewInit {
 
   private readonly options: any;
+  @Output() change: EventEmitter<string>;
 
   constructor(private elementRef: ElementRef) {
     this.options = {
       tab: ' '.repeat(2),
       indentOn: /[(\[]$/
     };
+    this.change = new EventEmitter<string>();
   }
 
   ngAfterViewInit(): void {
@@ -21,6 +23,10 @@ export class HighlightEditorDirective implements AfterViewInit {
     const editor = CodeJar(element, this.highlight, this.options);
     element.classList.add('highlight-editor');
     element.classList.add('scroll');
+
+    editor.onUpdate(code => {
+      this.change.emit(code);
+    })
   }
 
   private highlight(editor: HTMLElement): void {

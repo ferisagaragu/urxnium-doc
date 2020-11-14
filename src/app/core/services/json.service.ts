@@ -44,19 +44,24 @@ export class JsonService {
 
   private convertRestElement(resp: any, mapping: string, type: string): RestElementModel {
     const rest = resp[type].src.map(item => new RestModel(item));
+    let findItem = null;
+
+    rest.forEach(item => {
+      const findElement = item.elements.find(
+        itemChildFind => itemChildFind.mapping === mapping
+      );
+
+      if (findElement) {
+        findItem = findElement;
+      }
+    });
 
     return new RestElementModel(
-      rest.map(
-        itemFind => (
-          {
-            ...itemFind.elements.find(
-              itemChildFind => itemChildFind.mapping === mapping
-            ),
-            baseUrl: resp[type].baseUrl,
-            credentials: resp[type].credentials
-          }
-        )
-      )[0]
+      {
+        ...findItem,
+        baseUrl: resp[type].baseUrl,
+        credentials: resp[type].credentials
+      }
     );
   }
 

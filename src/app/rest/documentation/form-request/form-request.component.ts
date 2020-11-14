@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PathVariableModel } from '../../../core/models/path-variable.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -12,10 +12,11 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
   templateUrl: './form-request.component.html',
   styleUrls: ['./form-request.component.scss']
 })
-export class FormRequestComponent implements OnInit {
+export class FormRequestComponent implements OnInit, OnChanges {
 
   form: FormGroup;
   response: HttpResponse<any> | HttpErrorResponse;
+  load: boolean;
 
   @Input() access: string;
   @Input() baseUrl: string;
@@ -29,10 +30,19 @@ export class FormRequestComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private requestService: RequestService
-  ) { }
+  ) {
+    this.load = false;
+  }
 
   ngOnInit(): void {
     this.createForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.mapping.previousValue !== changes.mapping.currentValue) {
+      this.createForm();
+      this.response = null;
+    }
   }
 
   convertParams(mapping: string) {
@@ -72,21 +82,25 @@ export class FormRequestComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.load = true;
 
     this.requestService.request(
       this.access,
-      `${this.baseUrl}${this.convertParams(this.mapping)}`
+      `${this.baseUrl}${this.convertParams(this.mapping)}`,
+      this.form.value.requestBody
     ).subscribe(resp => {
-      console.log(resp)
       this.response = resp;
+      this.load = false;
     }, error => {
       this.response = error;
-      console.log(error);
+      this.load = false;
     });
   }
 
   private createForm(): void {
-    const dynamicForm: any = {};
+    const dynamicForm: any = this.requestBody ? {
+      requestBody: [this.requestBody]
+    } : { };
 
     if (this.pathVariables) {
       this.pathVariables.forEach(field => {

@@ -13,13 +13,16 @@ export class SectionAuthorizationComponent implements OnInit {
   form: FormGroup;
   authType: string;
   token: string;
+  load: boolean;
 
   @Input() credentials: Array<CredentialModel>;
 
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
-  ) { }
+  ) {
+    this.load = false;
+  }
 
   ngOnInit(): void {
     this.createForm();
@@ -44,7 +47,7 @@ export class SectionAuthorizationComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
+    this.load = true;
     const credential = new CredentialModel(this.form.value.credential);
 
     this.authenticationService.authenticate(credential)
@@ -52,9 +55,11 @@ export class SectionAuthorizationComponent implements OnInit {
         sessionStorage.setItem('token', resp);
         this.authType = 'success';
         this.token = resp;
+        this.load = false;
       }, () => {
         this.authType = 'error';
         this.token = 'none';
+        this.load = false;
       });
   }
 

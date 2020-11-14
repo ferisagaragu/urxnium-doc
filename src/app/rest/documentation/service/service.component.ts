@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonService } from '../../../core/services/json.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RestElementModel } from '../../../core/models/rest-element.model';
 
 @Component({
@@ -27,8 +27,6 @@ export class ServiceComponent implements OnInit {
       this.jsonService.findRestElementByMapping(params.mapping, 'rest')
         .subscribe(resp => {
           this.doc = resp;
-
-          console.log(resp);
         });
     })
   }

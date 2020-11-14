@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListRestComponent } from './list-rest/list-rest.component';
+import { HighlightEditorComponent } from './highlight-editor/highlight-editor.component';
 
 import { HighlightDirective } from '../core/directives/highlight.directive';
 import { HighlightEditorDirective } from '../core/directives/highlight-editor.directive';
@@ -32,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
   declarations: [
     SidebarComponent,
     ListRestComponent,
+    HighlightEditorComponent,
     HighlightDirective,
     HighlightEditorDirective,
     JsonFormatPipe
@@ -59,6 +61,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   exports: [
     SidebarComponent,
+    HighlightEditorComponent,
     HighlightDirective,
     HighlightEditorDirective,
     JsonFormatPipe,
