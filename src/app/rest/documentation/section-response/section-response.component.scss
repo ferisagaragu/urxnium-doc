@@ -1,0 +1,38 @@
+.response-header {
+  color: white;
+  padding: 1em;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-top: 2em;
+}
+
+.response-200 {
+  background: #00C853;
+}
+
+.response-300 {
+  background: #283593;
+}
+
+.response-400 {
+  background: #F57F17;
+}
+
+.response-500 {
+  background: #B71C1C;
+}
+
+.scroll {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 5px;
+  right: -5px;
+  background: transparent !important;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(158, 158, 158, 0.8);
+}

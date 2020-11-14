@@ -1,0 +1,24 @@
+<div *ngIf="permissions" class="row mt-3">
+  <div class="col-md-1 permission-label">
+    <strong>permissions:</strong>
+  </div>
+
+  <div class="col-md-10">
+    <mat-chip-list>
+      <mat-chip
+        *ngIf="permissions.length === 0"
+        class="permission-margin-chip"
+      >
+        none
+      </mat-chip>
+
+      <mat-chip
+        *ngFor="let permission of permissions; index as i;"
+        [class.permission-margin-chip]="i === 0"
+        class="permission-chip"
+      >
+        {{ permission }}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>

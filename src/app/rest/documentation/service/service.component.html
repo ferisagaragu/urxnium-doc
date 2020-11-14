@@ -1,1 +1,71 @@
-<p>service works!</p>
+<div *ngIf="doc">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ controllerName }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+      <mat-chip-list>
+        <mat-chip
+          [class.get]="doc.access === 'get'"
+          [class.post]="doc.access === 'post'"
+          [class.put]="doc.access === 'put'"
+          [class.delete]="doc.access === 'delete'"
+          [class.patch]="doc.access === 'patch'"
+        >
+          {{ doc.access }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div class="col-md-11">
+      <h3>{{ doc.name }}</h3>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      {{ doc.description }}
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <pre class="w-100">{{ doc.baseUrl + doc.mapping }}</pre>
+    </div>
+  </div>
+
+  <app-chip-permission [permissions]="doc.permissions"></app-chip-permission>
+
+  <app-tab-response
+    [responseOk]="doc.responseOk"
+    [responseCreated]="doc.responseCreated"
+    [responseNotModified]="doc.responseNotModified"
+    [responseBadRequest]="doc.responseBadRequest"
+    [responseUnauthorized]="doc.responseUnauthorized"
+    [responseForbidden]="doc.responseForbidden"
+    [responseInternalServerError]="doc.responseInternalServerError"
+  >
+  </app-tab-response>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2>Send request</h2>
+      <hr/>
+    </div>
+  </div>
+
+  <app-form-request
+    [baseUrl]="doc.baseUrl"
+    [mapping]="doc.mapping"
+    [pathVariables]="doc.pathVariables"
+    [requestBody]="doc.requestBody"
+    [authorization]="doc.authorization"
+    [credentials]="doc.credentials"
+    [access]="doc.access"
+  >
+  </app-form-request>
+</div>
+

@@ -18,29 +18,75 @@ export class JsonService {
       .pipe(map(resp => this.convertDoc(resp, type)));
   }
 
-  findRestElementByMapping(mapping: string): Observable<RestElementModel> {
+  findRestElementByMapping(mapping: string, type: string): Observable<RestElementModel> {
     return this.http.get('assets/data/doc.json')
-      .pipe(map(resp => this.convertRestElement(resp, mapping)));
+      .pipe(map(resp => this.convertRestElement(resp, mapping, type)));
+  }
+
+  findDoc(search: string, type: string) {
+    return this.http.get('assets/data/doc.json')
+      .pipe(map(resp => this.convertFindDoc(resp, search, type)));
   }
 
   private convertDoc(resp: any, type: string): DocModel {
-    //Aquí se ordenaran
-    console.log(resp)
     return new DocModel({
-      ...resp[type]
+      ...resp[type],
+      src: resp[type].src.map(controller => (
+        {
+          ...controller,
+          elements: controller.elements.sort((a, b) => (
+            this.convertValuesToOrder(a.access) - this.convertValuesToOrder(b.access)
+          )).map(item => ({ ...item, baseUrl: resp[type].baseUrl }))
+        }
+      ))
     });
   }
 
-  private convertRestElement(resp: any, mapping: string): RestElementModel {
-    const rest = resp.rest.map(item => new RestModel(item));
+  private convertRestElement(resp: any, mapping: string, type: string): RestElementModel {
+    const rest = resp[type].src.map(item => new RestModel(item));
 
     return new RestElementModel(
       rest.map(
-        itemFind => itemFind.elements.find(
-          itemChildFind => itemChildFind.mapping === mapping
+        itemFind => (
+          {
+            ...itemFind.elements.find(
+              itemChildFind => itemChildFind.mapping === mapping
+            ),
+            baseUrl: resp[type].baseUrl,
+            credentials: resp[type].credentials
+          }
         )
       )[0]
     );
+  }
+
+  private convertFindDoc(resp: any, search: string, type: string): DocModel {
+    return new DocModel({
+      ...resp[type],
+      src: resp[type].src.map(controller => (
+        {
+          ...controller,
+          elements: controller.elements.sort((a, b) => (
+            this.convertValuesToOrder(a.access) - this.convertValuesToOrder(b.access)
+          )).filter(item => `${item.access}${item.name}`.includes(search))
+            .map(item => ({ ...item, baseUrl: resp[type].baseUrl }))
+        }
+      ))
+    });
+  }
+
+  private convertValuesToOrder(value: string): number {
+    switch (value) {
+      case 'get': return 0;
+      case 'post': return 1;
+      case 'put': return 2;
+      case 'patch': return 3;
+      case 'delete': return 4;
+      case 'public': return 5;
+      case 'private': return 6;
+      case 'protected': return 7;
+    }
+    return -1;
   }
 
 }

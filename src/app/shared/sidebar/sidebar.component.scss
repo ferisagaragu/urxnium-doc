@@ -33,9 +33,13 @@
 .scroll::-webkit-scrollbar {
   width: 5px;
   right: -5px;
-  background-color: transparent;
+  background: transparent !important;
 }
 
 .scroll::-webkit-scrollbar-thumb {
   background-color: rgba(158, 158, 158, 0.8);
+}
+
+.f-withe {
+  color: #fafafa !important;
 }

@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-md-12">
+    <pre class="w-100">{{ baseUrl + convertParams(mapping) }}</pre>
+  </div>
+</div>
+
+<app-section-authorization
+  *ngIf="authorization"
+  [credentials]="credentials"
+>
+</app-section-authorization>
+
+<form [formGroup]="form" (ngSubmit)="send()">
+  <div class="row">
+    <div *ngIf="pathVariables" class="col-md-12 mt-2">
+      <h3>Path Params</h3>
+    </div>
+
+    <div *ngFor="let field of pathVariables" class="col-md-4">
+      <mat-form-field
+        *ngIf="field.type !== 'date' && field.type !== 'check'"
+        class="w-100"
+        appearance="outline"
+      >
+        <mat-label>{{ field.name }}</mat-label>
+
+        <input
+          matInput
+          [formControlName]="field.name"
+          [type]="field.type"
+          [placeholder]="field.description"
+        />
+
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        *ngIf="field.type === 'date'"
+        class="w-100"
+        appearance="outline"
+      >
+        <mat-label>{{ field.name }}</mat-label>
+
+        <input
+          matInput
+          [formControlName]="field.name"
+          [matDatepicker]="picker"
+          [placeholder]="field.description"
+        />
+
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-checkbox
+        *ngIf="field.type === 'check'" [formControlName]="field.name"
+        color="primary"
+      >
+        {{ field.description }}
+      </mat-checkbox>
+    </div>
+
+    <div *ngIf="requestBody" class="col-md-12 mt-2">
+      <h3>Request Body</h3>
+    </div>
+
+    <div *ngIf="requestBody" class="col-md-12">
+      <div
+        #requestBodyRef
+        class="highlight-orange"
+        appHighlightEditor
+      >
+        {{ requestBody | jsonFormat }}
+      </div>
+    </div>
+
+    <div class="col-md-12 mt-3 text-right">
+      <button mat-stroked-button color="primary">
+        Send request
+      </button>
+    </div>
+  </div>
+
+  <app-section-response
+    [response]="response"
+  >
+  </app-section-response>
+</form>

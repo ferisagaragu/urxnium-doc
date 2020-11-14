@@ -1,5 +1,5 @@
 <div class="animate__animated animate__bounceIn">
-  <div *ngFor="let item of src" class="row">
+  <div *ngFor="let item of src" class="row mb-3">
     <div class="col-md-12">
       <h2>{{ item.name }}</h2>
     </div>
@@ -39,6 +39,10 @@
       </div>
 
       <hr />
+    </div>
+
+    <div *ngIf="item.elements.length === 0" class="col-md-12 text-center">
+      No hay elementos para mostrar
     </div>
   </div>
 </div>

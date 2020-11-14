@@ -20,156 +20,36 @@
         "color": "#1DE9B6"
       }
     ],
+    "credentials": [
+      {
+        "name": "User Root",
+        "endPoint": "http://localhost:5000/auth/sign-in",
+        "bodyRequest": {
+          "password": "fernny27",
+          "userName": "fernnypay95"
+        },
+        "tokenMapping": "data.session.token"
+      },{
+        "name": "User Revisor",
+        "endPoint": "",
+        "bodyRequest": { },
+        "tokenMapping": "data.session.token"
+      }
+    ],
     "src": [
       {
         "name": "Auth",
         "elements": [
           {
-            "name": "sign-in",
-            "authorization": null,
-            "mapping": "/auth/sign-in3",
-            "access": "post",
-            "bookmark": "",
-            "description": "Servicio para registrar un usuario",
-            "html": null,
-            "steps": [
-              {
-                "name": "/users/find-all",
-                "access": "get"
-              }
-            ],
-            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
-            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
-            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
-
-
-
-            "pathVariables": [
-              {
-                "regex": "{userName}",
-                "value": "Fernando Garcia",
-                "type": "text"
-              }, {
-                "regex": "{password}",
-                "value": "",
-                "type": "text"
-              }
-            ],
-            "requestBody": {
-              "userName": "fernnypay95",
-              "password": "fernny27"
-            }
-          },{
-            "name": "sign-up",
-            "authorization": null,
-            "mapping": "/auth/sign-in4",
-            "access": "put",
-            "bookmark": "",
-            "description": "Servicio para registrar un usuario",
-            "html": null,
-            "steps": [
-              {
-                "name": "/users/find-all",
-                "access": "get"
-              }
-            ],
-            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
-            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
-            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
-
-
-
-            "pathVariables": [
-              {
-                "regex": "{userName}",
-                "value": "Fernando Garcia",
-                "type": "text"
-              }, {
-                "regex": "{password}",
-                "value": "",
-                "type": "text"
-              }
-            ],
-            "requestBody": {
-              "userName": "fernnypay95",
-              "password": "fernny27"
-            }
-          },{
-            "name": "sign-up",
-            "authorization": null,
-            "mapping": "/auth/sign-in",
-            "access": "delete",
-            "bookmark": "",
-            "description": "Servicio para registrar un usuario",
-            "html": null,
-            "steps": [
-              {
-                "name": "/users/find-all",
-                "access": "get"
-              }
-            ],
-            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
-            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
-            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
-
-
-
-            "pathVariables": [
-              {
-                "regex": "{userName}",
-                "value": "Fernando Garcia",
-                "type": "text"
-              }, {
-                "regex": "{password}",
-                "value": "",
-                "type": "text"
-              }
-            ],
-            "requestBody": {
-              "userName": "fernnypay95",
-              "password": "fernny27"
-            }
-          },{
-            "name": "sign-up",
-            "authorization": null,
-            "mapping": "/auth/sign-in/hola",
-            "access": "patch",
-            "bookmark": "",
-            "description": "Servicio para registrar un usuario",
-            "html": null,
-            "steps": [
-              {
-                "name": "/users/find-all",
-                "access": "patch"
-              }
-            ],
-            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
-            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
-            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
-
-
-
-            "pathVariables": [
-              {
-                "regex": "{userName}",
-                "value": "Fernando Garcia",
-                "type": "text"
-              }, {
-                "regex": "{password}",
-                "value": "",
-                "type": "text"
-              }
-            ],
-            "requestBody": {
-              "userName": "fernnypay95",
-              "password": "fernny27"
-            }
-          },{
-            "name": "sign-up",
-            "authorization": null,
-            "mapping": "/auth/sign-in",
+            "name": "find-user",
+            "authorization": true,
+            "mapping": "/users",
             "access": "get",
             "bookmark": "",
+            "permissions": [
+              "ADMIN",
+              "VISOR"
+            ],
             "description": "Servicio para registrar un usuario",
             "html": null,
             "steps": [
@@ -178,21 +58,76 @@
                 "access": "get"
               }
             ],
-            "responseOk": "{ \"timestamp\": \"07-05-2020  14:30:28 p. m.\", \"status\": 201, \"data\": { \"uid\": \"id unico\", \"userName\": \"nombre de usuario\" } }",
-            "responseBadRequest": "{ \"timestamp\": \"2020-01-03T16:42:13.727+0000\", \"status\": 400, \"error\": \"BAD_REQUEST\", \"message\": \"your problem message\" }",
-            "responseInternalServerError": "{ \"timestamp\": \"2020-01-03T17:37:02.348+0000\", \"status\": 500, \"error\": \"Internal Server Error\", \"message\": \"your error message\" }",
-
-
-
+            "responseOk": {
+              "timestamp": "07-05-2020  14:30:28 p. m.",
+              "status": 201,
+              "data": {
+                "uid": "id unico",
+                "userName": "nombre de usuario"
+              }
+            },
+            "responseBadRequest": {
+              "timestamp": "2020-01-03T16:42:13.727+0000",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your problem message"
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            }
+          }
+        ]
+      },{
+        "name": "Auth",
+        "elements": [
+          {
+            "name": "sign-in",
+            "authorization": true,
+            "mapping": "/auth/sign-in3/{isFalse}",
+            "access": "post",
+            "bookmark": "",
+            "permissions": [
+              "ADMIN",
+              "VISOR"
+            ],
+            "description": "Servicio para registrar un usuario",
+            "html": null,
+            "steps": [
+              {
+                "name": "/users/find-all",
+                "access": "get"
+              }
+            ],
+            "responseOk": {
+              "timestamp": "07-05-2020  14:30:28 p. m.",
+              "status": 201,
+              "data": {
+                "uid": "id unico",
+                "userName": "nombre de usuario"
+              }
+            },
+            "responseBadRequest": {
+              "timestamp": "2020-01-03T16:42:13.727+0000",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your problem message"
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
             "pathVariables": [
               {
-                "regex": "{userName}",
-                "value": "Fernando Garcia",
-                "type": "text"
-              }, {
-                "regex": "{password}",
-                "value": "",
-                "type": "text"
+                "name": "isFalse",
+                "description": "Es el nombre del usuario",
+                "value": true,
+                "type": "check",
+                "required": true
               }
             ],
             "requestBody": {

@@ -2,11 +2,28 @@
   <div class="header">
     <mat-form-field class="w-100 input-search" appearance="outline">
       <mat-label>Buscar...</mat-label>
-      <input #inputSearch matInput placeholder="Escribe aquí tu búsqueda">
+      <input
+        #inputSearch
+        matInput
+        placeholder="Escribe aquí tu búsqueda"
+        (keyup)="search($event)"
+      >
+
+      <button
+        mat-icon-button
+        matSuffix
+        class="f-withe"
+        (click)="clearSearch(inputSearch)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
   </div>
 
   <div class="space"></div>
 
-  <app-list-rest [src]="doc.src"></app-list-rest>
+  <app-list-rest
+    [src]="doc.src"
+  >
+  </app-list-rest>
 </mat-card>

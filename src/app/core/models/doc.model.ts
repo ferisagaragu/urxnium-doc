@@ -6,8 +6,6 @@ export class DocModel {
   description: string;
   icon: string;
   version: string;
-  baseUrl: string;
-  urlBaseDev: string;
   bookmarks: Array<BookMarkModel>;
   src: Array<RestModel>;
 
