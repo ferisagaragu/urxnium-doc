@@ -64,13 +64,15 @@ export class FormRequestComponent implements OnInit, OnChanges {
               moment(
                 this.form.get(paramName).value
               ).format(inputFormat.dateFormat)
-            ).replace('/', '%2F')
+                .replace('/', '%2F')
+            )
           );
         } else {
           mapping = mapping.replace(
             param,
             encodeURI(this.form.get(paramName).value)
-          ).replace('/', '%2F');
+              .replace('/', '%2F')
+          );
         }
       }
     });

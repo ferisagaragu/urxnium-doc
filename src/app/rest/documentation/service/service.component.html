@@ -50,7 +50,38 @@
   >
   </app-tab-response>
 
-  <div class="row mt-4">
+  <div *ngIf="doc.steps" class="row mt-3">
+    <div class="col-md-12">
+      <h2>Steps before</h2>
+    </div>
+  </div>
+
+  <div *ngFor="let step of doc.steps" class="row mb-3">
+    <div class="col-md-1 text-right">
+      <mat-chip-list class="access-position">
+        <mat-chip
+          [class.get]="step.access === 'get'"
+          [class.post]="step.access === 'post'"
+          [class.put]="step.access === 'put'"
+          [class.delete]="step.access === 'delete'"
+          [class.patch]="step.access === 'patch'"
+        >
+          {{ step.access }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div class="col-md-11">
+      <button
+        class="link"
+        [routerLink]="['/rest/documentation', controllerName, step.mapping]"
+      >
+        {{ step.mapping }}
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-5">
     <div class="col-md-12">
       <h2>Send request</h2>
       <hr/>

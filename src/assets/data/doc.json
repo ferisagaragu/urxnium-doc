@@ -43,7 +43,7 @@
           {
             "name": "find-user",
             "authorization": true,
-            "mapping": "/users",
+            "mapping": "/users/34",
             "access": "get",
             "bookmark": "",
             "permissions": [
@@ -54,7 +54,7 @@
             "html": null,
             "steps": [
               {
-                "name": "/users/find-all",
+                "mapping": "/users/find-all",
                 "access": "get"
               }
             ],
@@ -89,8 +89,14 @@
             "html": null,
             "steps": [
               {
-                "name": "/users/find-all",
+                "mapping": "/users",
+                "access": "post"
+              }, {
+                "mapping": "/users",
                 "access": "get"
+              },{
+                "mapping": "/users",
+                "access": "delete"
               }
             ],
             "responseOk": {
@@ -122,7 +128,45 @@
       },{
         "name": "Auth2",
         "elements": [
-
+          {
+            "name": "can-activate-account",
+            "authorization": false,
+            "mapping": "/auth/can-activate-account/{userUid}",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Servicio para validar que el token aun esta activo",
+            "html": null,
+            "steps": [],
+            "responseOk": {
+              "timestamp": "11-14-2020  10:37:09 a. m.",
+              "status": 200,
+              "data": {
+                "validateToken": true
+              }
+            },
+            "responseBadRequest": {
+              "timestamp": "2020-01-03T16:42:13.727+0000",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your problem message"
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "pathVariables": [
+              {
+                "name": "userUid",
+                "required": true,
+                "type": "text",
+                "value": "",
+                "description": "Uid del usuario a activar"
+              }
+            ]
+          }
         ]
       }
     ]

@@ -23,3 +23,17 @@
   background: #1DE9B6 !important;
 }
 
+.access-position {
+ position: absolute;
+  right: 0;
+}
+
+button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 8px;
+}

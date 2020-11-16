@@ -31,6 +31,11 @@
           [class.col-md-8]="element.access === 'delete' || element.access === 'patch'"
         >
           {{ element.name }}
+          <em
+            *ngIf="element.authorization"
+            class="mdi mdi-lock-alert-outline auth-color"
+          >
+          </em>
         </div>
 
         <div

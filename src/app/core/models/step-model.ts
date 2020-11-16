@@ -1,6 +1,6 @@
 export class StepModel {
 
-  name: string;
+  mapping: string;
   access: string;
 
   constructor(data: StepModel | any) {
