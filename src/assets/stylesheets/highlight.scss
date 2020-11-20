@@ -83,3 +83,18 @@ pre {
   border-radius: 8px;
   font-size: 14px;
 }
+
+.scroll {
+  overflow: auto;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  right: -5px;
+  background: transparent !important;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(158, 158, 158, 0.8);
+}

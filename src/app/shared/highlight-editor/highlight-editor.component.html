@@ -1,6 +1,7 @@
 <div
   class="highlight-orange"
   appHighlightEditor
+  [code]="this.value | jsonFormat"
   (change)="onChangeCode($event)"
 >
   {{ this.value | jsonFormat }}

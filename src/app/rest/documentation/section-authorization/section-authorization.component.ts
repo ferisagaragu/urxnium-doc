@@ -47,20 +47,29 @@ export class SectionAuthorizationComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    const credentialData = this.form.value.credential;
     this.load = true;
-    const credential = new CredentialModel(this.form.value.credential);
 
-    this.authenticationService.authenticate(credential)
-      .subscribe(resp => {
-        sessionStorage.setItem('token', resp);
-        this.authType = 'success';
-        this.token = resp;
-        this.load = false;
-      }, () => {
-        this.authType = 'error';
-        this.token = 'none';
-        this.load = false;
-      });
+    if (this.credentials) {
+      const credential = new CredentialModel(credentialData);
+
+      this.authenticationService.authenticate(credential)
+        .subscribe(resp => {
+          sessionStorage.setItem('token', resp);
+          this.authType = 'success';
+          this.token = resp;
+          this.load = false;
+        }, () => {
+          this.authType = 'error';
+          this.token = 'none';
+          this.load = false;
+        });
+    } else {
+      sessionStorage.setItem('token', credentialData);
+      this.authType = 'success';
+      this.token = credentialData;
+      this.load = false;
+    }
   }
 
 }

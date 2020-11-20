@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonService } from '../../../core/services/json.service';
 import { DocModel } from '../../../core/models/doc.model';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,11 @@ import { DocModel } from '../../../core/models/doc.model';
 export class HomeComponent implements OnInit {
 
   doc: DocModel;
+  version: string;
 
   constructor(private jsonService: JsonService) {
     this.doc = null;
+    this.version = environment.version;
   }
 
   ngOnInit(): void {

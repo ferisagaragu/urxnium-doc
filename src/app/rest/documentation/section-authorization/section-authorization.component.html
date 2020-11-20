@@ -1,20 +1,32 @@
 <form [formGroup]="form" (ngSubmit)="authorize()">
   <div class="row mt-3">
     <div class="col-md-10">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Authorization</mat-label>
+      <div *ngIf="credentials">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Authorization</mat-label>
 
-        <mat-select formControlName="credential">
-          <mat-option
-            *ngFor="let credential of credentials"
-            [value]="credential"
-          >
-            {{ credential.name }}
-          </mat-option>
-        </mat-select>
+          <mat-select *ngIf="credentials" formControlName="credential">
+            <mat-option
+              *ngFor="let credential of credentials"
+              [value]="credential"
+            >
+              {{ credential.name }}
+            </mat-option>
+          </mat-select>
 
-        <mat-error>The authorization is required</mat-error>
-      </mat-form-field>
+          <mat-error>The authorization is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="!credentials">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Authorization</mat-label>
+
+          <input matInput formControlName="credential">
+
+          <mat-error>The authorization is required</mat-error>
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="col-md-2">

@@ -20,22 +20,7 @@
         "color": "#1DE9B6"
       }
     ],
-    "credentials": [
-      {
-        "name": "User Root",
-        "endPoint": "http://localhost:5000/auth/sign-in",
-        "bodyRequest": {
-          "password": "fernny27",
-          "userName": "fernnypay95"
-        },
-        "tokenMapping": "data.session.token"
-      },{
-        "name": "User Revisor",
-        "endPoint": "",
-        "bodyRequest": { },
-        "tokenMapping": "data.session.token"
-      }
-    ],
+    "credentials": null,
     "src": [
       {
         "name": "Auth",
@@ -132,17 +117,29 @@
             "name": "can-activate-account",
             "authorization": false,
             "mapping": "/auth/can-activate-account/{userUid}",
-            "access": "get",
+            "access": "post",
             "bookmark": "",
             "permissions": [],
             "description": "Servicio para validar que el token aun esta activo",
             "html": null,
             "steps": [],
             "responseOk": {
-              "timestamp": "11-14-2020  10:37:09 a. m.",
+              "timestamp": "11-16-2020  18:44:24 p. m.",
               "status": 200,
               "data": {
-                "validateToken": true
+                "uid": "9bb5bd86-a01c-4eab-a7eb-a9d17f5f18fa",
+                "name": "Fernando Isaías",
+                "lastName": "García Aguirre",
+                "userName": "fernnypay95",
+                "email": "ferisagaragu@gmail.com",
+                "roles": [],
+                "photo": "https://storage.googleapis.com/exer-ship.appspot.com/users/1c280803-ffee-4031-b182-b1b7f67aeb6e.png?GoogleAccessId=firebase-adminsdk-jm81g@exer-ship.iam.gserviceaccount.com&Expires=10244882055&Signature=kN7FeMM53k%2BNcFRqu%2BG%2FxM6jfPuFYn8PzDq6o1ByAEcOpRMm2psgHM24yiKi%2Fh1zAMqERKrrHQ1cWCRkWa4w1dVkPI%2FunfBJtY%2Bnv0slaKQjunolUVtHH%2FShjYtssj9z4m1K0J%2FRnpdxK%2BFGAe3pGtBssTEFhdfQBAYOT0uPksl3Mvr0kue2XF6onzQNp5rN4hhZz3BOaRr48seTB%2Bj8vgS4MRWeq8CXiPc25NIq47jb3zvABgwfTK%2FnU44a9wlEHPcnAL5p8N9xoiAPkKl5uOSDMVljV%2BlHkZ8rmy7BFrRNHPNv08iN84DY1Swqv9V3f25r1aUm39z3r42kbae9vA%3D%3D",
+                "session": {
+                  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZXJubnlwYXk5NSIsImlhdCI6MTYwNTU3Mzg2NCwiZXhwIjoxNjA1NTkxODY0fQ.5JJx09gYY3b4pFR_hpNInwlCr-wC8Tb0rUF_JuDFbOmpeh_dtl5qkvWlmYCQIKuoC0KF7eOB_fIil9KzgVRfQg",
+                  "expiration": 18000000,
+                  "expirationDate": "2020-11-17T05:44:24.359+00:00",
+                  "refreshToken": ""
+                }
               }
             },
             "responseBadRequest": {
@@ -165,7 +162,11 @@
                 "value": "",
                 "description": "Uid del usuario a activar"
               }
-            ]
+            ],
+            "requestBody": {
+              "userName": "fernnypay95234234",
+              "password": "fernny2723423423"
+            }
           }
         ]
       }

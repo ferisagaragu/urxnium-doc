@@ -2,31 +2,31 @@
   <div class="col-md-12">
     <mat-tab-group>
       <mat-tab *ngIf="responseOk" label="HTTP 200 Ok">
-        <div class="highlight-blue" [appHighlight]="responseOk | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseOk | jsonFormat"></div>
       </mat-tab>
 
       <mat-tab *ngIf="responseCreated" label="HTTP 201 Created">
-        <div class="highlight-blue" [appHighlight]="responseCreated | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseCreated | jsonFormat"></div>
       </mat-tab>
 
       <mat-tab *ngIf="responseNotModified" label="HTTP 304 Not Modified">
-        <div class="highlight-blue" [appHighlight]="responseNotModified | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseNotModified | jsonFormat"></div>
       </mat-tab>
 
       <mat-tab *ngIf="responseBadRequest" label="HTTP 400 Bad Request">
-        <div class="highlight-blue" [appHighlight]="responseBadRequest | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseBadRequest | jsonFormat"></div>
       </mat-tab>
 
       <mat-tab *ngIf="responseUnauthorized" label="HTTP 401 Unauthorized">
-        <div class="highlight-blue" [appHighlight]="responseUnauthorized | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseUnauthorized | jsonFormat"></div>
       </mat-tab>
 
       <mat-tab *ngIf="responseForbidden" label="HTTP 403 Forbidden">
-        <div class="highlight-blue" [appHighlight]="responseForbidden | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseForbidden | jsonFormat"></div>
       </mat-tab>
 
       <mat-tab *ngIf="responseInternalServerError" label="HTTP 500 Internal Server Error">
-        <div class="highlight-blue" [appHighlight]="responseInternalServerError | jsonFormat"></div>
+        <div class="highlight-blue scroll" [appHighlight]="responseInternalServerError | jsonFormat"></div>
       </mat-tab>
     </mat-tab-group>
   </div>
