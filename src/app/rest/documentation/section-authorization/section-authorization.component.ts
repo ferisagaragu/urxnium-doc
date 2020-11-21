@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CredentialModel } from '../../../core/models/credential.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../../core/http/authentication.service
   templateUrl: './section-authorization.component.html',
   styleUrls: ['./section-authorization.component.scss']
 })
-export class SectionAuthorizationComponent implements OnInit {
+export class SectionAuthorizationComponent implements OnInit, OnChanges {
 
   form: FormGroup;
   authType: string;
@@ -33,13 +33,17 @@ export class SectionAuthorizationComponent implements OnInit {
     this.token = sessionStorage.getItem('token');
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.form) {
+      this.form.reset({
+        credential: this.getCredential()
+      });
+    }
+  }
+
   createForm(): void {
     this.form = this.formBuilder.group({
-      credential: [
-        this.credentials ?
-          this.credentials.length > 0 ? this.credentials[0] : ''
-        : ''
-      ]
+      credential: [ this.getCredential() ]
     });
   }
 
@@ -70,6 +74,12 @@ export class SectionAuthorizationComponent implements OnInit {
       this.token = credentialData;
       this.load = false;
     }
+  }
+
+  private getCredential() {
+    return this.credentials ?
+      this.credentials.length > 0 ? this.credentials[0] : ''
+    : '';
   }
 
 }

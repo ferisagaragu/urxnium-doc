@@ -1,61 +1,49 @@
 {
   "rest": {
-    "title": "ExerShip - REST",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    "icon": "https://image.flaticon.com/icons/svg/867/867644.svg",
-    "version": "0.0.1",
+    "title": "Exer-ship REST",
+    "description": "",
+    "icon": "",
+    "version": "1.0.0",
     "baseUrl": "http://localhost:5000",
-    "bookmarks": [
+    "baseUrlProd": "http://localhost:5000",
+    "bookmarks": [],
+    "credentials": [
       {
-        "name": "Auth",
-        "color": "orange",
-        "icon": "shield-account"
-      },
-      {
-        "name": "Front-End",
-        "color": "blue"
-      },
-      {
-        "name": "Back-End",
-        "color": "#1DE9B6"
+        "name": "User Root",
+        "endPoint": "http://localhost:5000/auth/sign-in",
+        "bodyRequest": {
+          "userName": "ferisagaragu@gmail.com",
+          "password": "fernny27"
+        },
+        "tokenMapping": "data.session.token"
       }
     ],
-    "credentials": null,
     "src": [
       {
         "name": "Auth",
         "elements": [
           {
-            "name": "find-user",
+            "name": "validate-token",
             "authorization": true,
-            "mapping": "/users/34",
+            "mapping": "/auth/validate-token",
             "access": "get",
             "bookmark": "",
-            "permissions": [
-              "ADMIN",
-              "VISOR"
-            ],
-            "description": "Servicio para registrar un usuario",
+            "permissions": [],
+            "description": "Servicio para validar si el token aun esta vigente",
             "html": null,
-            "steps": [
-              {
-                "mapping": "/users/find-all",
-                "access": "get"
-              }
-            ],
             "responseOk": {
-              "timestamp": "07-05-2020  14:30:28 p. m.",
-              "status": 201,
+              "timestamp": "11-19-2020  22:44:52 p. m.",
+              "status": 200,
               "data": {
-                "uid": "id unico",
-                "userName": "nombre de usuario"
+                "validateToken": true
               }
             },
             "responseBadRequest": {
-              "timestamp": "2020-01-03T16:42:13.727+0000",
-              "status": 400,
-              "error": "BAD_REQUEST",
-              "message": "your problem message"
+              "timestamp": "2020-11-20T05:01:59.237+00:00",
+              "status": 401,
+              "error": "Unauthorized",
+              "message": "Full authentication is required to access this resource",
+              "path": "/auth/validate-token"
             },
             "responseInternalServerError": {
               "timestamp": "2020-01-03T17:37:02.348+0000",
@@ -63,90 +51,29 @@
               "error": "Internal Server Error",
               "message": "your error message"
             }
-          },{
-            "name": "sign-in",
-            "authorization": false,
-            "mapping": "/auth/sign-in",
-            "access": "post",
-            "bookmark": "",
-            "permissions": [ ],
-            "description": "Servicio para registrar un usuario",
-            "html": null,
-            "steps": [
-              {
-                "mapping": "/users",
-                "access": "post"
-              }, {
-                "mapping": "/users",
-                "access": "get"
-              },{
-                "mapping": "/users",
-                "access": "delete"
-              }
-            ],
-            "responseOk": {
-              "timestamp": "07-05-2020  14:30:28 p. m.",
-              "status": 201,
-              "data": {
-                "uid": "id unico",
-                "userName": "nombre de usuario"
-              }
-            },
-            "responseBadRequest": {
-              "timestamp": "2020-01-03T16:42:13.727+0000",
-              "status": 400,
-              "error": "BAD_REQUEST",
-              "message": "your problem message"
-            },
-            "responseInternalServerError": {
-              "timestamp": "2020-01-03T17:37:02.348+0000",
-              "status": 500,
-              "error": "Internal Server Error",
-              "message": "your error message"
-            },
-            "requestBody": {
-              "userName": "fernnypay95",
-              "password": "fernny27"
-            }
-          }
-        ]
-      },{
-        "name": "Auth2",
-        "elements": [
+          },
           {
             "name": "can-activate-account",
             "authorization": false,
             "mapping": "/auth/can-activate-account/{userUid}",
-            "access": "post",
+            "access": "get",
             "bookmark": "",
             "permissions": [],
-            "description": "Servicio para validar que el token aun esta activo",
+            "description": "Servicio para saber si la cuenta de un usuario puede activarse",
             "html": null,
-            "steps": [],
             "responseOk": {
-              "timestamp": "11-16-2020  18:44:24 p. m.",
+              "timestamp": "11-19-2020  22:53:57 p. m.",
               "status": 200,
               "data": {
-                "uid": "9bb5bd86-a01c-4eab-a7eb-a9d17f5f18fa",
-                "name": "Fernando Isaías",
-                "lastName": "García Aguirre",
-                "userName": "fernnypay95",
-                "email": "ferisagaragu@gmail.com",
-                "roles": [],
-                "photo": "https://storage.googleapis.com/exer-ship.appspot.com/users/1c280803-ffee-4031-b182-b1b7f67aeb6e.png?GoogleAccessId=firebase-adminsdk-jm81g@exer-ship.iam.gserviceaccount.com&Expires=10244882055&Signature=kN7FeMM53k%2BNcFRqu%2BG%2FxM6jfPuFYn8PzDq6o1ByAEcOpRMm2psgHM24yiKi%2Fh1zAMqERKrrHQ1cWCRkWa4w1dVkPI%2FunfBJtY%2Bnv0slaKQjunolUVtHH%2FShjYtssj9z4m1K0J%2FRnpdxK%2BFGAe3pGtBssTEFhdfQBAYOT0uPksl3Mvr0kue2XF6onzQNp5rN4hhZz3BOaRr48seTB%2Bj8vgS4MRWeq8CXiPc25NIq47jb3zvABgwfTK%2FnU44a9wlEHPcnAL5p8N9xoiAPkKl5uOSDMVljV%2BlHkZ8rmy7BFrRNHPNv08iN84DY1Swqv9V3f25r1aUm39z3r42kbae9vA%3D%3D",
-                "session": {
-                  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZXJubnlwYXk5NSIsImlhdCI6MTYwNTU3Mzg2NCwiZXhwIjoxNjA1NTkxODY0fQ.5JJx09gYY3b4pFR_hpNInwlCr-wC8Tb0rUF_JuDFbOmpeh_dtl5qkvWlmYCQIKuoC0KF7eOB_fIil9KzgVRfQg",
-                  "expiration": 18000000,
-                  "expirationDate": "2020-11-17T05:44:24.359+00:00",
-                  "refreshToken": ""
-                }
+                "canActivate": true
               }
             },
             "responseBadRequest": {
-              "timestamp": "2020-01-03T16:42:13.727+0000",
+              "timestamp": "11-19-2020  22:53:11 p. m.",
               "status": 400,
               "error": "BAD_REQUEST",
-              "message": "your problem message"
+              "message": "Upps tu cuenta ya esta activada, intenta iniciando sesión de forma habitual",
+              "developMessage": ""
             },
             "responseInternalServerError": {
               "timestamp": "2020-01-03T17:37:02.348+0000",
@@ -157,20 +84,116 @@
             "pathVariables": [
               {
                 "name": "userUid",
-                "required": true,
+                "value": "9bb5bd86-a01c-4eab-a7eb-a9d17f5f18fa",
                 "type": "text",
-                "value": "",
-                "description": "Uid del usuario a activar"
+                "required": true
               }
-            ],
+            ]
+          },
+          {
+            "name": "can-change-password",
+            "authorization": false,
+            "mapping": "/auth/can-change-password/{activatePassword}",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Servicio para saber si es valido el código de cambio de contraseña de un usuario",
+            "html": null,
+            "responseOk": {
+              "timestamp": "11-20-2020  15:03:11 p. m.",
+              "status": 200,
+              "data": {
+                "canChangePassword": true
+              }
+            },
+            "responseBadRequest": {
+              "timestamp": "11-20-2020  14:27:56 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "Upps el código de recuperación no es valido",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "pathVariables": [
+              {
+                "name": "activatePassword",
+                "type": "text",
+                "value": "9bb5bd86-a01c-4eab-a7eb-a9d17f5f18fa",
+                "required": true
+              }
+            ]
+          },
+          {
+            "name": "activate-account",
+            "authorization": false,
+            "mapping": "/auth/activate-account",
+            "access": "post",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Servicio para activar una cuenta de usuario",
+            "html": null,
+            "responseOk": {
+              "timestamp": "11-20-2020  15:10:57 p. m.",
+              "status": 200,
+              "message": "Tu cuenta a sido activada con éxito"
+            },
+            "responseBadRequest": {
+              "timestamp": "11-20-2020  15:11:29 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "Upps tu cuenta ya esta activada",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
             "requestBody": {
-              "userName": "fernnypay95234234",
-              "password": "fernny2723423423"
+              "password": "Fernny27",
+              "uid": "9bb5bd86-a01c-4eab-a7eb-a9d17f5f18fa"
+            }
+          },
+          {
+            "name": "change-password",
+            "authorization": false,
+            "mapping": "/auth/change-password",
+            "access": "post",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Servicio para cambiar la contraseña a un usuario",
+            "html": null,
+            "responseOk": {
+              "timestamp": "11-20-2020  15:14:24 p. m.",
+              "status": 200,
+              "message": "Has cambiado tu contraseña con éxito"
+            },
+            "responseBadRequest": {
+              "timestamp": "11-20-2020  15:14:36 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "Upps no se encuentra ningún registro que coincida con el correo electrónico",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": {
+              "password": "fernny27",
+              "activatePassword": "107553ad-d9c9-45ad-9bd2-96bb4fb4a375"
             }
           }
         ]
       }
     ]
-  },
-  "doc": "sad"
+  }
 }
