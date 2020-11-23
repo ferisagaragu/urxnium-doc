@@ -7,6 +7,7 @@ import Prism from 'prismjs';
 export class HighlightDirective implements AfterViewInit, OnChanges {
 
   @Input('appHighlight') value: string;
+  @Input() language: string;
 
   constructor(private elementRef: ElementRef) { }
 
@@ -20,7 +21,11 @@ export class HighlightDirective implements AfterViewInit, OnChanges {
 
   private setElementCode(): void {
     const element: HTMLElement = this.elementRef.nativeElement;
-    element.innerHTML = Prism.highlight(this.value, Prism.languages.javascript, 'typescript');
+    element.innerHTML = Prism.highlight(
+      this.value,
+      Prism.languages.javascript,
+      this.language ? this.language: 'typescript'
+    );
     element.classList.add('highlight-container');
     element.classList.add('scroll');
   }

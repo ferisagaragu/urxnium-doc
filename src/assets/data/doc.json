@@ -1,7 +1,7 @@
 {
   "rest": {
     "title": "Exer-ship REST",
-    "description": "",
+    "description": "Esto es de documentacion rest",
     "icon": "",
     "version": "1.0.0",
     "baseUrl": "http://localhost:5000",
@@ -191,6 +191,178 @@
               "password": "fernny27",
               "activatePassword": "107553ad-d9c9-45ad-9bd2-96bb4fb4a375"
             }
+          }
+        ]
+      }
+    ]
+  },
+  "functional": {
+    "title": "Demo func",
+    "description": "Esto es ps para hacer otra prueba",
+    "icon": "",
+    "version": "0.0.1",
+    "bookmarks": [],
+    "src": [
+      {
+        "name": "urx-field",
+        "elements": [
+          {
+            "name": "urx-drop-file",
+            "access": "public",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "Uso estandar",
+                "description": "El siguiente codigo nos muestra como se puede manejar la clase",
+                "code": "import { Component } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { BurgerMenuElement, Notification, NotificationType } from 'ng-urxnium';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n\n  title = 'urxnium-angular';\n  form: FormGroup;\n  elements: Array<BurgerMenuElement>\n  notifications: Array<Notification>\n\n  constructor(\n    private formBuilder: FormBuilder\n  ) {\n    this.createForm();\n    this.elements = [\n      {\n        link: '/link',\n        title: 'title',\n        icon: 'mdi-airplane'\n      }\n    ]\n\n    this.notifications = [\n      {\n        uid: '123',\n        title: 'Title',\n        message: 'Hola amigo',\n        type: NotificationType.SUCCESS,\n        createDate: new Date(),\n        actionName: 'Entrar al otro sistema'\n      },{\n        uid: '12322',\n        title: 'Title',\n        message: 'Hola amigo',\n        type: NotificationType.SUCCESS,\n        createDate: new Date(),\n        go: '/home'\n      }\n    ]\n  }\n\n  private createForm(): void {\n    const file1 = new File([], 'demo file 1');\n    const file2 = new File([], 'demo file 2sdfdfdsfsdfsfsdfsdfsdsadsad.png');\n    const file3 = new File([], 'demo file 3.jpg');\n\n    this.form = this.formBuilder.group({\n      userImage: [[], Validators.compose([Validators.required])]\n    });\n  }\n\n  onSubmit() {\n    console.log(this.form.value);\n    console.log(this.form.valid);\n  }\n\n  goToHome() {\n    console.log('hola');\n  }\n}",
+                "out": "",
+                "language": "java"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "multiple",
+                "type": "boolean",
+                "description": "Determina si se usaran o no multiples archivos",
+                "default": "false"
+              }
+            ]
+          },
+          {
+            "name": "urx-drop-file1",
+            "access": "private",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "Uso estandar",
+                "description": "El siguiente codigo nos muestra como se puede manejar la clase",
+                "code": null,
+                "out": null,
+                "language": "javascript"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "default": ""
+              }
+            ]
+          },
+          {
+            "name": "urx-drop-file2",
+            "access": "protected",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "code": null,
+                "out": null,
+                "language": "javascript"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "default": ""
+              }
+            ]
+          },
+          {
+            "name": "urx-drop-file3",
+            "access": "interface",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "code": null,
+                "out": null,
+                "language": "javascript"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "default": ""
+              }
+            ]
+          },
+          {
+            "name": "urx-drop-file4",
+            "access": "enum",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "code": null,
+                "out": null,
+                "language": "javascript"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "default": ""
+              }
+            ]
+          },
+          {
+            "name": "urx-drop-file5",
+            "access": "entity",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "code": null,
+                "out": null,
+                "language": "javascript"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "default": ""
+              }
+            ]
+          },
+          {
+            "name": "urx-drop-file6",
+            "access": "component",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "code": null,
+                "out": null,
+                "language": "javascript"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "",
+                "type": "",
+                "description": "",
+                "default": ""
+              }
+            ]
           }
         ]
       }

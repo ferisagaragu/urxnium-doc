@@ -5,6 +5,8 @@ import { DocModel } from '../models/doc.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FunctionalModel } from '../models/functional.model';
+import { FunctionalElementModel } from '../models/functional-element.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +25,19 @@ export class JsonService {
       .pipe(map(resp => this.convertRestElement(resp, mapping, type)));
   }
 
-  findDoc(search: string, type: string) {
+  findRestElementByName(mapping: string, type: string): Observable<FunctionalElementModel> {
+    return this.http.get('assets/data/doc.json')
+      .pipe(map(resp => this.convertFunctionalElement(resp, mapping, type)));
+  }
+
+  findDoc(search: string, type: string): Observable<DocModel> {
     return this.http.get('assets/data/doc.json')
       .pipe(map(resp => this.convertFindDoc(resp, search, type)));
+  }
+
+  documentationType(): Observable<number> {
+    return this.http.get('assets/data/doc.json')
+      .pipe(map(resp => this.convertDocumentationType(resp)));
   }
 
   private convertDoc(resp: any, type: string): DocModel {
@@ -65,6 +77,27 @@ export class JsonService {
     );
   }
 
+  private convertFunctionalElement(resp: any, name: string, type: string): FunctionalElementModel {
+    const rest = resp[type].src.map(item => new FunctionalModel(item));
+    let findItem = null;
+
+    rest.forEach(item => {
+      const findElement = item.elements.find(
+        itemChildFind => itemChildFind.name === name
+      );
+
+      if (findElement) {
+        findItem = findElement;
+      }
+    });
+
+    return new FunctionalElementModel(
+      {
+        ...findItem
+      }
+    );
+  }
+
   private convertFindDoc(resp: any, search: string, type: string): DocModel {
     return new DocModel({
       ...resp[type],
@@ -80,6 +113,22 @@ export class JsonService {
     });
   }
 
+  private convertDocumentationType(resp: any): number {
+    console.log(resp)
+
+    if (resp.rest && resp.functional) {
+      return 2;
+    }
+
+    if (resp.rest) {
+      return 1;
+    }
+
+    if (resp.functional) {
+      return 0;
+    }
+  }
+
   private convertValuesToOrder(value: string): number {
     switch (value) {
       case 'get': return 0;
@@ -90,6 +139,10 @@ export class JsonService {
       case 'public': return 5;
       case 'private': return 6;
       case 'protected': return 7;
+      case 'entity': return 8;
+      case 'enum': return 9;
+      case 'interface': return 10;
+      case 'component': return 11;
     }
     return -1;
   }

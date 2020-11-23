@@ -20,7 +20,6 @@ export class RequestService {
   }
 
   private get(path: string): Observable<any> {
-    console.log(path)
     return this.http.get(
       path,
       {

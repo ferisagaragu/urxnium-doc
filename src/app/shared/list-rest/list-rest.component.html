@@ -3,11 +3,22 @@
     <div class="col-md-12 text-center">
       <button
         mat-mini-fab
+        [class.mr-2]="dual"
         color="primary"
-        [routerLink]="['/']"
         matTooltip="Go to home"
+        (click)="goToHome()"
       >
         <mat-icon>home</mat-icon>
+      </button>
+
+      <button
+        *ngIf="dual"
+        mat-mini-fab
+        color="primary"
+        [matTooltip]="docType === 'rest' ? 'Functional' : 'REST'"
+        (click)="goToDocument()"
+      >
+        <mat-icon>{{ docType === 'rest' ? 'chrome_reader_mode' : 'dns' }}</mat-icon>
       </button>
     </div>
   </div>
@@ -23,12 +34,26 @@
         mat-ripple
         class="row ml-0 mr-0 pointer"
         routerLinkActive="selected"
-        [routerLink]="['documentation', item.name, element.mapping]"
+        [routerLink]="[
+          element.mapping ? 'documentation' : 'documentations',
+          item.name,
+          element.mapping ? element.mapping : element.name
+        ]"
       >
         <div
           class="name-position"
           [class.col-md-9]="element.access === 'get' || element.access === 'post' || element.access === 'put'"
-          [class.col-md-8]="element.access === 'delete' || element.access === 'patch'"
+          [class.col-md-8]="
+            element.access === 'delete' ||
+            element.access === 'patch' ||
+            element.access === 'public' ||
+            element.access === 'private' ||
+            element.access === 'protected' ||
+            element.access === 'component' ||
+            element.access === 'interface' ||
+            element.access === 'enum' ||
+            element.access === 'entity'
+          "
         >
           {{ element.name }}
           <em
@@ -41,7 +66,17 @@
         <div
           class="text-right"
           [class.col-md-3]="element.access === 'get' || element.access === 'post' || element.access === 'put'"
-          [class.col-md-4]="element.access === 'delete' || element.access === 'patch'"
+          [class.col-md-4]="
+            element.access === 'delete' ||
+            element.access === 'patch' ||
+            element.access === 'public' ||
+            element.access === 'private' ||
+            element.access === 'protected' ||
+            element.access === 'component' ||
+            element.access === 'interface' ||
+            element.access === 'enum' ||
+            element.access === 'entity'
+          "
         >
           <mat-chip-list>
             <mat-chip
@@ -50,6 +85,13 @@
               [class.put]="element.access === 'put'"
               [class.delete]="element.access === 'delete'"
               [class.patch]="element.access === 'patch'"
+              [class.public]="element.access === 'public'"
+              [class.private]="element.access === 'private'"
+              [class.protected]="element.access === 'protected'"
+              [class.component]="element.access === 'component'"
+              [class.interface]="element.access === 'interface'"
+              [class.enum]="element.access === 'enum'"
+              [class.entity]="element.access === 'entity'"
             >
               {{ element.access }}
             </mat-chip>

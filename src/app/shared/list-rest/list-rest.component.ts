@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Inject, Input } from '@angular/core';
 import { RestModel } from '../../core/models/rest.model';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-rest',
@@ -10,8 +11,13 @@ import { DOCUMENT } from '@angular/common';
 export class ListRestComponent implements AfterViewInit {
 
   @Input() src: Array<RestModel>;
+  @Input() docType: string;
+  @Input() dual: boolean;
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router
+  ) { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -23,4 +29,13 @@ export class ListRestComponent implements AfterViewInit {
     }, 500);
   }
 
+  goToHome(): void {
+    this.router.navigate([`/${this.docType}`]);
+  }
+
+  goToDocument(): void {
+    this.router.navigate(
+      [`/${this.docType === 'rest' ? 'functional' : 'rest'}`]
+    );
+  }
 }

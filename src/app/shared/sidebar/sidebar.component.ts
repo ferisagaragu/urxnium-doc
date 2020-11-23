@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
 
   @Input() docType: string;
   doc: DocModel;
+  dual: boolean;
 
   constructor(
     private jsonService: JsonService,
@@ -45,8 +46,11 @@ export class SidebarComponent implements OnInit {
   }
 
   private getData(): void {
-    this.jsonService.getData(this.docType).subscribe(resp => {
-      this.doc = resp;
+    this.jsonService.getData(this.docType).subscribe(respData => {
+      this.jsonService.documentationType().subscribe(respType => {
+        this.doc = respData;
+        this.dual = respType === 2;
+      });
     });
   }
 

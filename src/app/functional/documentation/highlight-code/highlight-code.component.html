@@ -1,0 +1,26 @@
+<div *ngFor="let exampleCode of exampleCodes" class="row mt-3">
+  <div class="col-md-12">
+    <h3 class="mt-3"><strong>{{ exampleCode.title }}</strong></h3>
+
+    <p>{{ exampleCode.description }}</p>
+
+    <div
+      *ngIf="exampleCode.code"
+      class="highlight"
+      [appHighlight]="exampleCode.code"
+      [language]="exampleCode.language"
+    >
+    </div>
+
+    <div *ngIf="exampleCode.out">
+      <h3 class="mt-3 mb-1"><strong>Output</strong></h3>
+
+      <div
+        class="highlight"
+        [appHighlight]="exampleCode.out"
+        [language]="exampleCode.language"
+      >
+      </div>
+    </div>
+  </div>
+</div>

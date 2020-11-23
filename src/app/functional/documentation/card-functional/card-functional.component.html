@@ -1,0 +1,43 @@
+<div class="pb-3" *ngIf="doc">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ controllerName }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <mat-chip-list>
+        <mat-chip
+          [class.public]="doc.access === 'public'"
+          [class.private]="doc.access === 'private'"
+          [class.protected]="doc.access === 'protected'"
+          [class.entity]="doc.access === 'entity'"
+          [class.enum]="doc.access === 'enum'"
+          [class.interface]="doc.access === 'interface'"
+          [class.component]="doc.access === 'component'"
+        >
+          {{ doc.access }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div class="col-md-10 name-position">
+      <h3>{{ doc.name }}</h3>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      {{ doc.description }}
+    </div>
+  </div>
+
+  <app-highlight-code
+    [exampleCodes]="doc.exampleCodes"
+  >
+  </app-highlight-code>
+
+  <app-table-attribute [attributes]="doc.attributes">
+  </app-table-attribute>
+</div>
