@@ -29,6 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { ShellDirective } from '../core/directives/shell.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatTableModule } from '@angular/material/table';
     HighlightEditorComponent,
     HighlightDirective,
     HighlightEditorDirective,
-    JsonFormatPipe
+    JsonFormatPipe,
+    ShellDirective
   ],
   imports: [
     CommonModule,
@@ -85,7 +87,8 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    ShellDirective
   ]
 })
 export class SharedModule { }

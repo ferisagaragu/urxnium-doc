@@ -5,20 +5,36 @@
     <p>{{ exampleCode.description }}</p>
 
     <div
-      *ngIf="exampleCode.code"
-      class="highlight"
+      *ngIf="exampleCode.code && exampleCode.language !== 'shell'"
       [appHighlight]="exampleCode.code"
       [language]="exampleCode.language"
+      class="highlight"
+    >
+    </div>
+
+    <div
+      *ngIf="exampleCode.code && exampleCode.language === 'shell'"
+      shell="urx doc init"
     >
     </div>
 
     <div *ngIf="exampleCode.out">
-      <h3 class="mt-3 mb-1"><strong>Output</strong></h3>
+      <h3 class="mt-3 mb-1">
+        <strong>Output</strong>
+      </h3>
 
       <div
-        class="highlight"
+        *ngIf="exampleCode.out && exampleCode.language !== 'shell'"
         [appHighlight]="exampleCode.out"
         [language]="exampleCode.language"
+        class="highlight"
+      >
+      </div>
+
+      <div
+        *ngIf="exampleCode.out && exampleCode.language === 'shell'"
+        [shell]="exampleCode.out"
+        class="mt-3 mb-1"
       >
       </div>
     </div>

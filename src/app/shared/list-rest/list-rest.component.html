@@ -52,7 +52,8 @@
             element.access === 'component' ||
             element.access === 'interface' ||
             element.access === 'enum' ||
-            element.access === 'entity'
+            element.access === 'entity' ||
+            element.access === 'shell'
           "
         >
           {{ element.name }}
@@ -75,7 +76,8 @@
             element.access === 'component' ||
             element.access === 'interface' ||
             element.access === 'enum' ||
-            element.access === 'entity'
+            element.access === 'entity' ||
+            element.access === 'shell'
           "
         >
           <mat-chip-list>
@@ -92,6 +94,7 @@
               [class.interface]="element.access === 'interface'"
               [class.enum]="element.access === 'enum'"
               [class.entity]="element.access === 'entity'"
+              [class.shell]="element.access === 'shell'"
             >
               {{ element.access }}
             </mat-chip>

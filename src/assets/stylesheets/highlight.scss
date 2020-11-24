@@ -126,3 +126,13 @@ pre {
 .scroll::-webkit-scrollbar-thumb {
   background-color: rgba(158, 158, 158, 0.8);
 }
+
+.highlight-shell {
+  background: #283142;
+  font-size: 16px;
+  padding: 1em;
+  border-radius: 8px;
+  color: white;
+  font-family: 'google-console', serif;
+  white-space: pre-wrap;
+}

@@ -363,6 +363,23 @@
                 "default": ""
               }
             ]
+          },
+          {
+            "name": "urx-drop-file7",
+            "access": "shell",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
           }
         ]
       }

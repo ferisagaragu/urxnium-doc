@@ -43,7 +43,7 @@ export class JsonService {
   private convertDoc(resp: any, type: string): DocModel {
     return new DocModel({
       ...resp[type],
-      src: resp[type].src.map(controller => (
+      src: resp[type]?.src.map(controller => (
         {
           ...controller,
           elements: controller.elements.sort((a, b) => (
@@ -114,8 +114,6 @@ export class JsonService {
   }
 
   private convertDocumentationType(resp: any): number {
-    console.log(resp)
-
     if (resp.rest && resp.functional) {
       return 2;
     }
@@ -143,6 +141,7 @@ export class JsonService {
       case 'enum': return 9;
       case 'interface': return 10;
       case 'component': return 11;
+      case 'shell': return 12;
     }
     return -1;
   }
