@@ -19,7 +19,7 @@ export const REST_ROUTES_CHILDREN: Routes = [
         path: '',
         loadChildren: () => import('../../rest/dashboard/dashboard.module').then(m => m.DashboardModule)
       },{
-        path: 'documentation/:controllerName/:mapping',
+        path: 'documentation/:controllerName/:mapping/:access',
         loadChildren: () => import('../../rest/documentation/documentation.module').then(m => m.DocumentationModule)
       }
     ]

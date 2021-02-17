@@ -2,7 +2,11 @@
   <div class="col-md-12">
     <mat-tab-group>
       <mat-tab *ngIf="responseOk" label="HTTP 200 Ok">
-        <div class="highlight-blue scroll" [appHighlight]="responseOk | jsonFormat"></div>
+        <div *ngIf="responseOk !== 'FILE'" class="highlight-blue scroll" [appHighlight]="responseOk | jsonFormat"></div>
+
+        <div *ngIf="responseOk === 'FILE'" class="pt-4 pb-2 text-center file-icon">
+          <strong class="mdi mdi-file-star mdi-48px"></strong>
+        </div>
       </mat-tab>
 
       <mat-tab *ngIf="responseCreated" label="HTTP 201 Created">

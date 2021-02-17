@@ -8,6 +8,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 })
 export class SectionResponseComponent {
   @Input() response: HttpResponse<any> | HttpErrorResponse;
+  @Input() file: boolean;
 
   convertStatus(): string {
     switch (this.response.status) {
@@ -23,4 +24,9 @@ export class SectionResponseComponent {
 
     return this.response.statusText;
   }
+
+  openFile() {
+    window.open(window.URL.createObjectURL(this.response['body']));
+  }
+
 }

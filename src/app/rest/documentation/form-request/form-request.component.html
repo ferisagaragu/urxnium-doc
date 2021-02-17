@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <pre class="w-100">{{ baseUrl + convertParams(mapping) }}</pre>
+    <pre class="w-100" #url>{{ baseUrl + convertParamsVariables(mapping) + convertPathParams() }}</pre>
   </div>
 </div>
 
@@ -10,13 +10,63 @@
 >
 </app-section-authorization>
 
-<form [formGroup]="form" (ngSubmit)="send()">
+<form [formGroup]="form" (ngSubmit)="send(url)">
   <div class="row">
     <div *ngIf="pathVariables" class="col-md-12 mt-2">
-      <h3>Path Params</h3>
+      <h3>Path Variables</h3>
     </div>
 
     <div *ngFor="let field of pathVariables" class="col-md-4">
+      <mat-form-field
+        *ngIf="field.type !== 'date' && field.type !== 'check'"
+        class="w-100"
+        appearance="outline"
+      >
+        <mat-label>{{ field.name }}</mat-label>
+
+        <input
+          matInput
+          [formControlName]="field.name"
+          [type]="field.type"
+          [placeholder]="field.description"
+        />
+
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        *ngIf="field.type === 'date'"
+        class="w-100"
+        appearance="outline"
+      >
+        <mat-label>{{ field.name }}</mat-label>
+
+        <input
+          matInput
+          [formControlName]="field.name"
+          [matDatepicker]="picker"
+          [placeholder]="field.description"
+        />
+
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-checkbox
+        *ngIf="field.type === 'check'" [formControlName]="field.name"
+        color="primary"
+      >
+        {{ field.description }}
+      </mat-checkbox>
+    </div>
+
+    <div *ngIf="pathParams" class="col-md-12 mt-2">
+      <h3>Path Params</h3>
+    </div>
+
+    <div *ngFor="let field of pathParams" class="col-md-4">
       <mat-form-field
         *ngIf="field.type !== 'date' && field.type !== 'check'"
         class="w-100"
@@ -85,6 +135,7 @@
 
   <app-section-response
     [response]="response"
+    [file]="file"
   >
   </app-section-response>
 </form>

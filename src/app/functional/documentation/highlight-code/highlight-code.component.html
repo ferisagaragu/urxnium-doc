@@ -14,7 +14,7 @@
 
     <div
       *ngIf="exampleCode.code && exampleCode.language === 'shell'"
-      shell="urx doc init"
+      [shell]="exampleCode.code"
     >
     </div>
 

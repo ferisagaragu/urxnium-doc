@@ -19,7 +19,7 @@ export const FUNCTIONAL_ROUTES_CHILDREN: Routes = [
         path: '',
         loadChildren: () => import('../../functional/dashboard/dashboard.module').then(m => m.DashboardModule)
       },{
-        path: 'documentations/:controllerName/:name',
+        path: 'documentations/:controllerName/:name/:access',
         loadChildren: () => import('../../functional/documentation/documentation.module').then(m => m.DocumentationModule)
       }
     ]

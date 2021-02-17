@@ -38,4 +38,17 @@ export class ListRestComponent implements AfterViewInit {
       [`/${this.docType === 'rest' ? 'functional' : 'rest'}`]
     );
   }
+
+  limitText(text: string): string {
+    if (text) {
+      if (text.length > 20) {
+        return `${text.substring(0, 20)}...`;
+      } else {
+        return text;
+      }
+    } else {
+      return '';
+    }
+  }
+
 }

@@ -2,7 +2,7 @@
   <div class="col-md-12 mt-3 mb-4">
     <div
       class="response-header"
-      [class.response-200]="response.status === 200 || response.status === 201 "
+      [class.response-200]="response.status === 200 || response.status === 201"
       [class.response-300]="response.status === 300"
       [class.response-400]="
         response.status === 400 ||
@@ -12,12 +12,28 @@
         response.status === 405
       "
       [class.response-500]="response.status === 500"
+      [class.response-file]="file"
     >
-      {{ response.status + ' ' + convertStatus() }}
+      <div class="row">
+        <div class="col-6" [class.mt-2]="file">
+          {{ response.status + ' ' + convertStatus() }}
+        </div>
+
+        <div *ngIf="file" class="col-6 text-right">
+          <button
+            type="button"
+            mat-stroked-button
+            (click)="openFile()"
+          >
+            <strong class="mdi mdi-file"></strong>
+            Download File
+          </button>
+        </div>
+      </div>
     </div>
 
     <div
-      *ngIf="response.body"
+      *ngIf="response.body && !file"
       class="highlight-green scroll"
       [appHighlight]="response.body | jsonFormat"
     >

@@ -10,12 +10,14 @@ export class RestElementModel {
   urlBaseDev: string;
   mapping: string;
   access: 'get' | 'post' | 'put' | 'delete' | 'patch';
+  file: boolean;
   bookmark: string;
   description: string;
   credentials: Array<CredentialModel>;
   html: object;
   steps: Array<StepModel>;
   pathVariables: Array<PathVariableModel>;
+  pathParams: Array<PathVariableModel>;
   requestBody: object;
   permissions: Array<String>;
   responseOk: object;

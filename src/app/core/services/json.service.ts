@@ -20,9 +20,9 @@ export class JsonService {
       .pipe(map(resp => this.convertDoc(resp, type)));
   }
 
-  findRestElementByMapping(mapping: string, type: string): Observable<RestElementModel> {
+  findRestElementByMapping(mapping: string, access: string, type: string): Observable<RestElementModel> {
     return this.http.get('assets/data/doc.json')
-      .pipe(map(resp => this.convertRestElement(resp, mapping, type)));
+      .pipe(map(resp => this.convertRestElement(resp, mapping, access, type)));
   }
 
   findRestElementByName(mapping: string, type: string): Observable<FunctionalElementModel> {
@@ -46,7 +46,11 @@ export class JsonService {
       src: resp[type]?.src.map(controller => (
         {
           ...controller,
-          elements: controller.elements.sort((a, b) => (
+          elements: controller.elements.sort(function(a, b){
+            if(a.name < b.name) { return -1; }
+            if(a.name > b.name) { return 1; }
+            return 0;
+          }).sort((a, b) => (
             this.convertValuesToOrder(a.access) - this.convertValuesToOrder(b.access)
           )).map(item => ({ ...item, baseUrl: resp[type].baseUrl }))
         }
@@ -54,13 +58,13 @@ export class JsonService {
     });
   }
 
-  private convertRestElement(resp: any, mapping: string, type: string): RestElementModel {
+  private convertRestElement(resp: any, mapping: string, access: string, type: string): RestElementModel {
     const rest = resp[type].src.map(item => new RestModel(item));
     let findItem = null;
 
     rest.forEach(item => {
       const findElement = item.elements.find(
-        itemChildFind => itemChildFind.mapping === mapping
+        itemChildFind => itemChildFind.mapping === mapping && itemChildFind.access === access
       );
 
       if (findElement) {
@@ -104,7 +108,11 @@ export class JsonService {
       src: resp[type].src.map(controller => (
         {
           ...controller,
-          elements: controller.elements.sort((a, b) => (
+          elements: controller.elements.sort(function(a, b){
+            if(a.name < b.name) { return -1; }
+            if(a.name > b.name) { return 1; }
+            return 0;
+          }).sort((a, b) => (
             this.convertValuesToOrder(a.access) - this.convertValuesToOrder(b.access)
           )).filter(item => `${item.access}${item.name}`.includes(search))
             .map(item => ({ ...item, baseUrl: resp[type].baseUrl }))

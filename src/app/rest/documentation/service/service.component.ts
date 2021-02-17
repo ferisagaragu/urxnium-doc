@@ -24,7 +24,7 @@ export class ServiceComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.controllerName = params.controllerName;
 
-      this.jsonService.findRestElementByMapping(params.mapping, 'rest')
+      this.jsonService.findRestElementByMapping(params.mapping, params.access, 'rest')
         .subscribe(resp => {
           this.doc = resp;
         });

@@ -1,11 +1,11 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PathVariableModel } from '../../../core/models/path-variable.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { CredentialModel } from '../../../core/models/credential.model';
 import { RequestService } from '../../../core/http/request.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-form-request',
@@ -16,12 +16,15 @@ export class FormRequestComponent implements OnInit, OnChanges {
 
   form: FormGroup;
   response: HttpResponse<any> | HttpErrorResponse;
+  responseUrl: string;
   load: boolean;
 
   @Input() access: string;
+  @Input() file: boolean;
   @Input() baseUrl: string;
   @Input() mapping: string;
   @Input() pathVariables: Array<PathVariableModel>;
+  @Input() pathParams: Array<PathVariableModel>;
   @Input() requestBody: object;
   @Input() authorization: boolean;
   @Input() credentials: Array<CredentialModel>;
@@ -39,13 +42,22 @@ export class FormRequestComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.mapping.previousValue !== changes.mapping.currentValue) {
+    if (
+      (
+        changes.mapping &&
+        changes.mapping.previousValue !== changes.mapping.currentValue
+      ) || (
+        changes.access &&
+        changes.access.previousValue !== changes.access.currentValue
+      )
+    ) {
       this.createForm();
       this.response = null;
+      this.responseUrl = null;
     }
   }
 
-  convertParams(mapping: string) {
+  convertParamsVariables(mapping: string) {
     this.getUrlParams(this.mapping).forEach(param =>  {
       const paramName = param.replace('{', '').replace('}', '');
 
@@ -65,6 +77,7 @@ export class FormRequestComponent implements OnInit, OnChanges {
                 this.form.get(paramName).value
               ).format(inputFormat.dateFormat)
                 .replace('/', '%2F')
+                .replace("#", "%23")
             )
           );
         } else {
@@ -72,6 +85,7 @@ export class FormRequestComponent implements OnInit, OnChanges {
             param,
             encodeURI(this.form.get(paramName).value)
               .replace('/', '%2F')
+              .replace("#", "%23")
           );
         }
       }
@@ -80,15 +94,39 @@ export class FormRequestComponent implements OnInit, OnChanges {
     return mapping;
   }
 
-  send(): void {
+  convertPathParams() {
+    let out = '';
+
+    if (this.pathParams) {
+      this.pathParams.forEach((param: PathVariableModel, index: number) => {
+        if (index === 0) {
+          out += `?${param.name}=${
+            encodeURI(this.form.get(param.name).value)
+            .replace('/', '%2F')
+            .replace('#', '%23')
+          }`;
+        } else {
+          out += `&${param.name}=${
+            encodeURI(this.form.get(param.name).value)
+            .replace('/', '%2F')
+            .replace('#', '%23')
+          }`;
+        }
+      });
+    }
+
+    return out;
+  }
+
+  send(url: HTMLElement): void {
     if (this.form.invalid) {
       return;
     }
     this.load = true;
 
     this.requestService.request(
-      this.access,
-      `${this.baseUrl}${this.convertParams(this.mapping)}`,
+      `${this.access}${this.file ? '-file' : ''}`,
+      url.textContent,
       this.form.value.requestBody
     ).subscribe(resp => {
       this.response = resp;
@@ -106,6 +144,25 @@ export class FormRequestComponent implements OnInit, OnChanges {
 
     if (this.pathVariables) {
       this.pathVariables.forEach(field => {
+
+        if (field.required) {
+          dynamicForm[field.name] = [
+            field.type === 'date' && field.dateFormat ?
+              moment(field.value, field.dateFormat).toDate() : field.value,
+            Validators.compose([Validators.required])
+          ];
+        } else {
+          dynamicForm[field.name] = [
+            field.type === 'date' && field.dateFormat ?
+              moment(field.value, field.dateFormat).toDate() : field.value
+          ];
+        }
+
+      });
+    }
+
+    if (this.pathParams) {
+      this.pathParams.forEach(field => {
 
         if (field.required) {
           dynamicForm[field.name] = [

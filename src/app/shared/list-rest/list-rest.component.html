@@ -37,7 +37,8 @@
         [routerLink]="[
           element.mapping ? 'documentation' : 'documentations',
           item.name,
-          element.mapping ? element.mapping : element.name
+          element.mapping ? element.mapping : element.name,
+          element.access
         ]"
       >
         <div
@@ -56,7 +57,7 @@
             element.access === 'shell'
           "
         >
-          {{ element.name }}
+          {{ limitText(element.name) }}
           <em
             *ngIf="element.authorization"
             class="mdi mdi-lock-alert-outline auth-color"
