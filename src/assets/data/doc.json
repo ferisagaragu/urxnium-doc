@@ -1,16 +1,16 @@
 {
   "rest": {
-    "title": "Exer-ship REST",
-    "description": "Esto es de documentacion rest",
+    "title": "Notarialy",
+    "description": "Notarialy rest api",
     "icon": "",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "baseUrl": "http://localhost:5000",
     "baseUrlProd": "http://localhost:5000",
     "bookmarks": [],
     "credentials": [
       {
         "name": "User Root",
-        "endPoint": "http://localhost:5000/auth/sign-in",
+        "endPoint": "http://localhost:5000/api/auth/sign-in",
         "bodyRequest": {
           "userName": "ferisagaragu@gmail.com",
           "password": "fernny27"
@@ -23,64 +23,69 @@
         "name": "Auth",
         "elements": [
           {
-            "name": "validate-token",
-            "authorization": true,
-            "mapping": "/auth/validate-token",
-            "access": "get",
+            "name": "signIn",
+            "authorization": false,
+            "file": false,
+            "mapping": "/api/auth/sign-in",
+            "access": "post",
             "bookmark": "",
             "permissions": [],
-            "description": "Servicio para validar si el token aun esta vigente",
+            "description": "Service to log into the system",
             "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
             "responseOk": {
-              "timestamp": "11-19-2020  22:44:52 p. m.",
+              "timestamp": "02-16-2021  22:41:19 p. m.",
               "status": 200,
               "data": {
-                "validateToken": true
+                "uuid": "6f02cd0c-6691-43e5-ad8e-b65e221cea00",
+                "name": "Fernando Isaías",
+                "surname": "García",
+                "motherSurname": "Aguirre",
+                "userName": "fergargod",
+                "email": "ferisagaragu@gmail.com",
+                "phoneNumber": "",
+                "photo": "http://localhost:5000/api/auth/profile/F/%23000000/%23FFECB3",
+                "session": {
+                  "token": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6W10sInN1YiI6ImZlcmdhcmdvZCIsImlhdCI6MTYxMzUzNjg3OSwiZXhwIjoxNjEzNTU0ODc5fQ.1eYffHw8mkzJmpwaMuODi3ZWsFI4QdyXGfOPp8-VUPkiZTu0MHmLqMjN0zpspnMsYdJfEwsf3liYBZTaSpwCbA",
+                  "expiration": "18000000",
+                  "expirationDate": "2021-02-17T09:41:19.521+00:00",
+                  "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6W10sInN1YiI6ImZlcmdhcmdvZF9yZWZyZXNoIiwiaWF0IjoxNjEzNTM2ODc5LCJleHAiOjE2NDUwOTM3Nzl9.1kWyOrurhr3joVQNCP728OzHC8WMiwKmXEsR_MTpjE04Qt9ef5BqCvyH1DWU6RfJcu6URq0hRrv8JqgpeokU9g"
+                }
               }
             },
-            "responseBadRequest": {
-              "timestamp": "2020-11-20T05:01:59.237+00:00",
+            "responseCreated": null,
+            "responseUnauthorized": {
+              "timestamp": "11-20-2020  16:53:53 p. m.",
               "status": 401,
-              "error": "Unauthorized",
-              "message": "Full authentication is required to access this resource",
-              "path": "/auth/validate-token"
+              "error": "UNAUTHORIZED",
+              "message": "your bad request message",
+              "developMessage": ""
             },
+            "responseBadRequest": null,
             "responseInternalServerError": {
               "timestamp": "2020-01-03T17:37:02.348+0000",
               "status": 500,
               "error": "Internal Server Error",
               "message": "your error message"
+            },
+            "requestBody": {
+              "userName": "ferisagaragu@gmail.com",
+              "password": "fernny27"
             }
           },
           {
-            "name": "can-activate-account",
+            "name": "canActivate",
             "authorization": false,
-            "mapping": "/auth/can-activate-account/{userUid}",
+            "file": false,
+            "mapping": "/api/auth/can-activate-account/{userUid}",
             "access": "get",
             "bookmark": "",
             "permissions": [],
-            "description": "Servicio para saber si la cuenta de un usuario puede activarse",
+            "description": "Service to know if the user account can be activated",
             "html": null,
-            "responseOk": {
-              "timestamp": "11-19-2020  22:53:57 p. m.",
-              "status": 200,
-              "data": {
-                "canActivate": true
-              }
-            },
-            "responseBadRequest": {
-              "timestamp": "11-19-2020  22:53:11 p. m.",
-              "status": 400,
-              "error": "BAD_REQUEST",
-              "message": "Upps tu cuenta ya esta activada, intenta iniciando sesión de forma habitual",
-              "developMessage": ""
-            },
-            "responseInternalServerError": {
-              "timestamp": "2020-01-03T17:37:02.348+0000",
-              "status": 500,
-              "error": "Internal Server Error",
-              "message": "your error message"
-            },
+            "steps": null,
             "pathVariables": [
               {
                 "name": "userUid",
@@ -88,29 +93,22 @@
                 "type": "text",
                 "required": true
               }
-            ]
-          },
-          {
-            "name": "can-change-password",
-            "authorization": false,
-            "mapping": "/auth/can-change-password/{activatePassword}",
-            "access": "get",
-            "bookmark": "",
-            "permissions": [],
-            "description": "Servicio para saber si es valido el código de cambio de contraseña de un usuario",
-            "html": null,
+            ],
+            "pathParams": null,
             "responseOk": {
-              "timestamp": "11-20-2020  15:03:11 p. m.",
+              "timestamp": "11-19-2020  22:53:57 p. m.",
               "status": 200,
               "data": {
-                "canChangePassword": true
+                "canActivate": true
               }
             },
+            "responseCreated": null,
+            "responseUnauthorized": null,
             "responseBadRequest": {
-              "timestamp": "11-20-2020  14:27:56 p. m.",
+              "timestamp": "11-19-2020  22:53:11 p. m.",
               "status": 400,
               "error": "BAD_REQUEST",
-              "message": "Upps el código de recuperación no es valido",
+              "message": "your bad request message",
               "developMessage": ""
             },
             "responseInternalServerError": {
@@ -119,34 +117,114 @@
               "error": "Internal Server Error",
               "message": "your error message"
             },
+            "requestBody": null
+          },
+          {
+            "name": "validateToken",
+            "authorization": true,
+            "file": false,
+            "mapping": "/api/auth/validate-token",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Service to verify if a token has not yet expired",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": {
+              "timestamp": "02-16-2021  00:21:56 a. m.",
+              "status": 200,
+              "data": {
+                "validateToken": true
+              }
+            },
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-19-2020  22:53:11 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your bad request message",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": null
+          },
+          {
+            "name": "canChangePassword",
+            "authorization": false,
+            "file": false,
+            "mapping": "/api/auth/can-change-password/{activatePassword}",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Service to know if the password of the user account can be changed",
+            "html": null,
+            "steps": null,
             "pathVariables": [
               {
                 "name": "activatePassword",
-                "type": "text",
                 "value": "9bb5bd86-a01c-4eab-a7eb-a9d17f5f18fa",
+                "type": "text",
                 "required": true
               }
-            ]
+            ],
+            "pathParams": null,
+            "responseOk": {
+              "timestamp": "02-16-2021  00:12:38 a. m.",
+              "status": 200,
+              "data": {
+                "canChangePassword": true
+              }
+            },
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-19-2020  22:53:11 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your bad request message",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": null
           },
           {
-            "name": "activate-account",
+            "name": "activateAccount",
             "authorization": false,
-            "mapping": "/auth/activate-account",
+            "file": false,
+            "mapping": "/api/auth/activate-account",
             "access": "post",
             "bookmark": "",
             "permissions": [],
-            "description": "Servicio para activar una cuenta de usuario",
+            "description": "Service to activate a user account",
             "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
             "responseOk": {
               "timestamp": "11-20-2020  15:10:57 p. m.",
               "status": 200,
-              "message": "Tu cuenta a sido activada con éxito"
+              "message": "Your account has been activated successfully"
             },
+            "responseCreated": null,
+            "responseUnauthorized": null,
             "responseBadRequest": {
               "timestamp": "11-20-2020  15:11:29 p. m.",
               "status": 400,
               "error": "BAD_REQUEST",
-              "message": "Upps tu cuenta ya esta activada",
+              "message": "your bad request message",
               "developMessage": ""
             },
             "responseInternalServerError": {
@@ -161,24 +239,71 @@
             }
           },
           {
-            "name": "change-password",
+            "name": "signUp",
             "authorization": false,
-            "mapping": "/auth/change-password",
+            "file": false,
+            "mapping": "/api/auth/sign-up",
             "access": "post",
             "bookmark": "",
             "permissions": [],
-            "description": "Servicio para cambiar la contraseña a un usuario",
+            "description": "Service to register a new user",
             "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": null,
+            "responseCreated": {
+              "timestamp": "11-20-2020  15:58:11 p. m.",
+              "status": 201,
+              "message": "Your account has been created successfully, we will send you an email with instructions on how to activate it"
+            },
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-20-2020  15:58:30 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your bad request message",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": {
+              "name": "Fake name",
+              "surname": "SurnameName",
+              "motherSurname": "FakeMotherSurname",
+              "userName": "FakeUserName",
+              "email": "fake.email@gmail.com"
+            }
+          },
+          {
+            "name": "changePassword",
+            "authorization": false,
+            "file": false,
+            "mapping": "/api/auth/change-password",
+            "access": "post",
+            "bookmark": "",
+            "permissions": [],
+            "description": "You have successfully changed your password",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
             "responseOk": {
               "timestamp": "11-20-2020  15:14:24 p. m.",
               "status": 200,
-              "message": "Has cambiado tu contraseña con éxito"
+              "message": "You have successfully changed your password"
             },
+            "responseCreated": null,
+            "responseUnauthorized": null,
             "responseBadRequest": {
               "timestamp": "11-20-2020  15:14:36 p. m.",
               "status": 400,
               "error": "BAD_REQUEST",
-              "message": "Upps no se encuentra ningún registro que coincida con el correo electrónico",
+              "message": "your bad request message",
               "developMessage": ""
             },
             "responseInternalServerError": {
@@ -191,6 +316,243 @@
               "password": "fernny27",
               "activatePassword": "107553ad-d9c9-45ad-9bd2-96bb4fb4a375"
             }
+          },
+          {
+            "name": "recoverPassword",
+            "authorization": false,
+            "file": false,
+            "mapping": "/api/auth/recover-password",
+            "access": "post",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Service to recover a user's password",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": {
+              "timestamp": "11-20-2020  15:17:32 p. m.",
+              "status": 200,
+              "message": "We have sent an email to YOUR_ACCOUNT with the instructions to recover your password"
+            },
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-20-2020  15:17:56 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "Upps no se encuentra ningún registro que coincida con el correo electrónico",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": {
+              "email": "ferisagaragu@gmail.com"
+            }
+          },
+          {
+            "name": "refreshToken",
+            "authorization": false,
+            "file": false,
+            "mapping": "/api/auth/refresh-token",
+            "access": "post",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Service to refresh a user's token",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": {
+              "timestamp": "11-20-2020  17:01:02 p. m.",
+              "status": 200,
+              "data": {
+                "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJGYWtlVXNlck5hbWUiLCJpYXQiOjE2MDU5MTMyNjIsImV4cCI6MTYwNTkzMTI2Mn0.5-AkVaqwmaRrPukIaDHLcx5mxEM7iuIJOgJRu-IXVDpb12ULGIbizQGGdZsjzBfreOvwkt4C9gbVuGIkXjeHzw",
+                "expiration": 18000000,
+                "expirationDate": "2020-11-21T04:01:02.115+00:00"
+              }
+            },
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-19-2020  22:53:11 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your bad request message",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": {
+              "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJGYWtlVXNlck5hbWVfcmVmcmVzaCIsImlhdCI6MTYwNTkwOTQ4OSwiZXhwIjoxNjM3NDY2Mzg5fQ.bMfUPwUTBRqg5s8LH7kRT49OgQjB2VPZQtRUFAg0-LQ_V3xvO2B-uTXB2y2F9XVzHugIY8Uura2U6OGFDutEnA"
+            }
+          },
+          {
+            "name": "generateGoogleAuthenticationUrl",
+            "authorization": false,
+            "file": false,
+            "mapping": "/api/auth/generate-google-authentication-url",
+            "access": "get",
+            "bookmark": "mdi-numeric-1-circle",
+            "permissions": [],
+            "description": "Service to get access url from Google",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": {
+              "timestamp": "02-17-2021  11:20:15 a. m.",
+              "status": 200,
+              "data": {
+                "authUrl": "https://accounts.google.com/o/oauth2/auth?client_id=851373049159-bgqvq2vi18ju8vui15n0ajun94ks8lbh.apps.googleusercontent.com&redirect_uri=https://fir-login-3db2a.web.app&response_type=code&scope=email%20profile&state=http://localhost:5000"
+              }
+            },
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-19-2020  22:53:11 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your bad request message",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": null
+          },
+          {
+            "name": "generateProfileImage",
+            "authorization": false,
+            "file": true,
+            "mapping": "/api/auth/generate-profile-image/{lyrics}/{color}/{background}",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "Service to generate user image",
+            "html": null,
+            "steps": null,
+            "pathVariables": [
+              {
+                "name": "lyrics",
+                "value": "F",
+                "type": "text",
+                "required": true
+              },
+              {
+                "name": "color",
+                "value": "#FFFFFF",
+                "type": "text",
+                "required": true
+              },
+              {
+                "name": "background",
+                "value": "#e91e63",
+                "type": "text",
+                "required": true
+              }
+            ],
+            "pathParams": null,
+            "responseOk": "FILE",
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": {
+              "timestamp": "11-19-2020  22:53:11 p. m.",
+              "status": 400,
+              "error": "BAD_REQUEST",
+              "message": "your bad request message",
+              "developMessage": ""
+            },
+            "responseInternalServerError": {
+              "timestamp": "2020-01-03T17:37:02.348+0000",
+              "status": 500,
+              "error": "Internal Server Error",
+              "message": "your error message"
+            },
+            "requestBody": null
+          }
+        ]
+      },
+      {
+        "name": "Company",
+        "elements": [
+          {
+            "name": "googleUrl",
+            "authorization": false,
+            "file": false,
+            "mapping": "/company/get-google-url",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": null,
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": null,
+            "responseInternalServerError": null,
+            "requestBody": null
+          },
+          {
+            "name": "signinGoogle",
+            "authorization": false,
+            "file": false,
+            "mapping": "/company/signin",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "text",
+                "required": true
+              }
+            ],
+            "responseOk": null,
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": null,
+            "responseInternalServerError": null,
+            "requestBody": null
+          },
+          {
+            "name": "findAllCompaniesByUserUuid",
+            "authorization": false,
+            "file": false,
+            "mapping": "/company",
+            "access": "get",
+            "bookmark": "",
+            "permissions": [],
+            "description": "",
+            "html": null,
+            "steps": null,
+            "pathVariables": null,
+            "pathParams": null,
+            "responseOk": null,
+            "responseCreated": null,
+            "responseUnauthorized": null,
+            "responseBadRequest": null,
+            "responseInternalServerError": null,
+            "requestBody": null
           }
         ]
       }

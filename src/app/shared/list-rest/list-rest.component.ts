@@ -41,8 +41,8 @@ export class ListRestComponent implements AfterViewInit {
 
   limitText(text: string): string {
     if (text) {
-      if (text.length > 20) {
-        return `${text.substring(0, 20)}...`;
+      if (text.length > 15) {
+        return `${text.substring(0, 15)}...`;
       } else {
         return text;
       }

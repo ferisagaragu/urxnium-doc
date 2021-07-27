@@ -14,7 +14,7 @@ export class RestElementModel {
   bookmark: string;
   description: string;
   credentials: Array<CredentialModel>;
-  html: object;
+  html: any;
   steps: Array<StepModel>;
   pathVariables: Array<PathVariableModel>;
   pathParams: Array<PathVariableModel>;

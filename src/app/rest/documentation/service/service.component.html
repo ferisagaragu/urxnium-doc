@@ -31,6 +31,12 @@
     </div>
   </div>
 
+  <div *ngIf="doc.html" class="row mt-3">
+    <div #html class="col-12">
+      {{ putHtml(html) }}
+    </div>
+  </div>
+
   <div class="row mt-3">
     <div class="col-md-12">
       <pre class="w-100">{{ doc.baseUrl + doc.mapping }}</pre>
@@ -74,7 +80,12 @@
     <div class="col-md-11">
       <button
         class="link"
-        [routerLink]="['/rest/documentation', controllerName, step.mapping]"
+        [routerLink]="[
+          '/rest/documentation',
+          controllerName,
+          step.mapping,
+          step.access
+        ]"
       >
         {{ step.mapping }}
       </button>
