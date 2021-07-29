@@ -150,6 +150,12 @@ export class JsonService {
       case 'interface': return 10;
       case 'component': return 11;
       case 'shell': return 12;
+      case 'directive': return 13;
+      case 'service': return 14;
+      case 'guard': return 15;
+      case 'pipeline': return 16;
+      case 'stylesheet': return 17;
+      case 'module': return 18;
     }
     return -1;
   }

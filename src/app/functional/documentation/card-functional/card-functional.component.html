@@ -16,6 +16,12 @@
           [class.enum]="doc.access === 'enum'"
           [class.interface]="doc.access === 'interface'"
           [class.component]="doc.access === 'component'"
+          [class.directive] ="doc.access === 'directive'"
+          [class.service] ="doc.access === 'service'"
+          [class.guard] ="doc.access === 'guard'"
+          [class.pipeline] ="doc.access === 'pipeline'"
+          [class.stylesheet] ="doc.access === 'stylesheet'"
+          [class.module]="doc.access === 'module'"
           [class.shell]="doc.access === 'shell'"
         >
           {{ doc.access }}

@@ -54,17 +54,26 @@
             element.access === 'interface' ||
             element.access === 'enum' ||
             element.access === 'entity' ||
+            element.access === 'directive' ||
+            element.access === 'service' ||
+            element.access === 'guard' ||
+            element.access === 'pipeline' ||
+            element.access === 'stylesheet' ||
+            element.access === 'module' ||
             element.access === 'shell'
           "
         >
-          {{ limitText(element.name) }}
+          <span [matTooltip]="element.name">
+            {{ limitText(element.name) }}
+          </span>
+
           <em
             *ngIf="element.authorization"
             class="mdi mdi-lock-alert-outline auth-color"
           >
           </em>
-          <em *ngIf="element.bookmark" class="mdi {{ element.bookmark }} book-mark">
-          </em>
+
+          <em *ngIf="element.bookmark" class="mdi {{ element.bookmark }} book-mark"></em>
         </div>
 
         <div
@@ -80,6 +89,12 @@
             element.access === 'interface' ||
             element.access === 'enum' ||
             element.access === 'entity' ||
+            element.access === 'directive' ||
+            element.access === 'service' ||
+            element.access === 'guard' ||
+            element.access === 'pipeline' ||
+            element.access === 'stylesheet' ||
+            element.access === 'module' ||
             element.access === 'shell'
           "
         >
@@ -97,6 +112,12 @@
               [class.interface]="element.access === 'interface'"
               [class.enum]="element.access === 'enum'"
               [class.entity]="element.access === 'entity'"
+              [class.directive] ="element.access === 'directive'"
+              [class.service] ="element.access === 'service'"
+              [class.guard] ="element.access === 'guard'"
+              [class.pipeline] ="element.access === 'pipeline'"
+              [class.stylesheet] ="element.access === 'stylesheet'"
+              [class.module]="element.access === 'module'"
               [class.shell]="element.access === 'shell'"
             >
               {{ element.access }}

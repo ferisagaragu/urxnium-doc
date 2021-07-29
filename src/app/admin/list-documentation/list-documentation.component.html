@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-3">
+      <div class="add-document" (click)="addDocumentation()">
+        <em class="mdi mdi-plus plus-icon"></em>
+        <br>
+        Nueva documentación
+      </div>
+    </div>
+
+    <mat-card *ngFor="let doc of docs" class="col-md-3 ml-4">
+      <div class="card-container" (click)="showDoc(doc.uuid)">
+        <div class="functional">
+          {{ doc.functionalName  ? doc.functionalName : '-' }}
+        </div>
+
+        <div class="rest">
+          {{ doc.restName ? doc.restName : '-' }}
+        </div>
+
+        <div class="text-right">
+          <em>{{ doc.uuid }}</em>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

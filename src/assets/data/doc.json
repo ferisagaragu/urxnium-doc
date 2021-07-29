@@ -742,6 +742,108 @@
               }
             ],
             "attributes": []
+          },
+          {
+            "name": "urx-drop-file8",
+            "access": "directive",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
+          },
+          {
+            "name": "urx-drop-file9",
+            "access": "service",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
+          },
+          {
+            "name": "urx-drop-file10",
+            "access": "guard",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
+          },
+          {
+            "name": "urx-drop-file11",
+            "access": "pipeline",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
+          },
+          {
+            "name": "urx-drop-file12",
+            "access": "stylesheet",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
+          },
+          {
+            "name": "urx-drop-file13",
+            "access": "module",
+            "bookmark": "",
+            "description": "Componente para arrastrar y guardar archivos en el sistema",
+            "html": null,
+            "exampleCodes": [
+              {
+                "title": "title",
+                "description": "descriptiones",
+                "code": "urx doc init",
+                "out": "bootstrap/\n├── css/\n│   ├── bootstrap.css\n│   ├── bootstrap.min.css\n│   ├── bootstrap-theme.css\n│   └── bootstrap-theme.min.css\n├── js/\n│   ├── bootstrap.js\n│   └── bootstrap.min.js\n└── fonts/\n    ├── glyphicons-halflings-regular.eot\n    ├── glyphicons-halflings-regular.svg\n    ├── glyphicons-halflings-regular.ttf\n    └── glyphicons-halflings-regular.woff",
+                "language": "shell"
+              }
+            ],
+            "attributes": []
           }
         ]
       }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonService } from './core/services/json.service';
+import { AuthService } from './core/http/auth.service';
 
 @Component({
   selector: 'app-root',
