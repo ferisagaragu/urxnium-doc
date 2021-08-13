@@ -156,6 +156,7 @@ export class JsonService {
       case 'pipeline': return 16;
       case 'stylesheet': return 17;
       case 'module': return 18;
+      case 'class': return 19;
     }
     return -1;
   }

@@ -29,4 +29,8 @@ export class CardFunctionalComponent implements OnInit {
     });
   }
 
+  putHtml(html: HTMLDivElement): void {
+    html.innerHTML = this.doc.html
+  }
+
 }

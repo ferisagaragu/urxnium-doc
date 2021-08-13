@@ -60,7 +60,8 @@
             element.access === 'pipeline' ||
             element.access === 'stylesheet' ||
             element.access === 'module' ||
-            element.access === 'shell'
+            element.access === 'shell' ||
+            element.access === 'class'
           "
         >
           <span [matTooltip]="element.name">
@@ -95,7 +96,8 @@
             element.access === 'pipeline' ||
             element.access === 'stylesheet' ||
             element.access === 'module' ||
-            element.access === 'shell'
+            element.access === 'shell' ||
+            element.access === 'class'
           "
         >
           <mat-chip-list>
@@ -119,6 +121,7 @@
               [class.stylesheet] ="element.access === 'stylesheet'"
               [class.module]="element.access === 'module'"
               [class.shell]="element.access === 'shell'"
+              [class._class]="element.access === 'class'"
             >
               {{ element.access }}
             </mat-chip>
